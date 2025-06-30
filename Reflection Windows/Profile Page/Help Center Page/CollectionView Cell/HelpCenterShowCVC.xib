@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="23094" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23084"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Poppins-Regular.ttf">
+            <string>Poppins-Regular</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="HelpCenterShowCVC" customModule="Reflection_Windows" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="405" height="65"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="405" height="65"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iCP-HW-uFa">
+                        <rect key="frame" x="10" y="10" width="385" height="45"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_themeRightArrow" translatesAutoresizingMaskIntoConstraints="NO" id="sg8-QF-3MZ">
+                                <rect key="frame" x="350" y="10" width="25" height="25"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="25" id="KNn-be-FJn">
+                                        <variation key="heightClass=regular-widthClass=regular" constant="35"/>
+                                    </constraint>
+                                    <constraint firstAttribute="width" secondItem="sg8-QF-3MZ" secondAttribute="height" multiplier="1:1" id="SJN-xQ-aLM"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Question" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2uR-yO-zEd">
+                                <rect key="frame" x="10" y="5" width="335" height="35"/>
+                                <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="14"/>
+                                <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="heightClass=regular-widthClass=regular">
+                                    <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="20"/>
+                                </variation>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="2uR-yO-zEd" firstAttribute="centerY" secondItem="iCP-HW-uFa" secondAttribute="centerY" id="Seb-hs-lx5"/>
+                            <constraint firstItem="sg8-QF-3MZ" firstAttribute="leading" secondItem="2uR-yO-zEd" secondAttribute="trailing" constant="5" id="Vzu-YK-dLh">
+                                <variation key="heightClass=regular-widthClass=regular" constant="10"/>
+                            </constraint>
+                            <constraint firstAttribute="trailing" secondItem="sg8-QF-3MZ" secondAttribute="trailing" constant="10" id="ZRi-hA-tuJ">
+                                <variation key="heightClass=regular-widthClass=regular" constant="20"/>
+                            </constraint>
+                            <constraint firstItem="2uR-yO-zEd" firstAttribute="leading" secondItem="iCP-HW-uFa" secondAttribute="leading" constant="10" id="gqI-oD-6nP">
+                                <variation key="heightClass=regular-widthClass=regular" constant="20"/>
+                            </constraint>
+                            <constraint firstAttribute="bottom" secondItem="2uR-yO-zEd" secondAttribute="bottom" constant="5" id="ht9-PW-12x">
+                                <variation key="heightClass=regular-widthClass=regular" constant="10"/>
+                            </constraint>
+                            <constraint firstItem="2uR-yO-zEd" firstAttribute="top" secondItem="iCP-HW-uFa" secondAttribute="top" constant="5" id="pKz-8q-D0E">
+                                <variation key="heightClass=regular-widthClass=regular" constant="10"/>
+                            </constraint>
+                            <constraint firstItem="sg8-QF-3MZ" firstAttribute="centerY" secondItem="iCP-HW-uFa" secondAttribute="centerY" id="yNL-ID-ZqI"/>
+                        </constraints>
+                    </view>
+                </subviews>
+            </view>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="iCP-HW-uFa" secondAttribute="bottom" constant="10" id="CVm-eo-izp">
+                    <variation key="heightClass=regular-widthClass=regular" constant="15"/>
+                </constraint>
+                <constraint firstItem="iCP-HW-uFa" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="10" id="Yjk-FS-Vbc">
+                    <variation key="heightClass=regular-widthClass=regular" constant="20"/>
+                </constraint>
+                <constraint firstAttribute="trailing" secondItem="iCP-HW-uFa" secondAttribute="trailing" constant="10" id="gfq-j1-Lvh">
+                    <variation key="heightClass=regular-widthClass=regular" constant="20"/>
+                </constraint>
+                <constraint firstItem="iCP-HW-uFa" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="10" id="x6u-1k-hOq">
+                    <variation key="heightClass=regular-widthClass=regular" constant="15"/>
+                </constraint>
+            </constraints>
+            <size key="customSize" width="405" height="65"/>
+            <connections>
+                <outlet property="baseView" destination="iCP-HW-uFa" id="nT5-Ac-SvH"/>
+                <outlet property="titleLbl" destination="2uR-yO-zEd" id="Qli-B5-376"/>
+            </connections>
+            <point key="canvasLocation" x="333.58778625954199" y="3.8732394366197185"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="ic_themeRightArrow" width="24.333333969116211" height="24"/>
+    </resources>
+</document>

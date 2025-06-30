@@ -1,0 +1,76 @@
+//
+//  EditProfileDataModel.swift
+//  Reflection Windows
+//
+//  Created by Girish Bhuva on 18/03/24.
+//
+
+import Foundation
+
+// MARK: - Welcome
+struct EditProfileDataModel: Codable {
+    let data: NotificationSettingResult?
+    let success: Bool?
+    let message: String?
+    let statusCode: Int?
+
+    enum CodingKeys: String, CodingKey {
+        case data, success, message
+        case statusCode = "status_code"
+    }
+}
+
+// MARK: - DataClass
+struct NotificationSettingResult: Codable {
+    let id: Int?
+    let fullname, avatar, countryCode, mobile: String?
+    let deviceToken: String?
+    let email, dob, empID, gender: String?
+    let nationality, emiratesID: String?
+    let healthCard, citizenshipCard: String?
+    let driverLicenseNum, emailVerifiedAt: String?
+    let otp: Int?
+    let otpExpireTime: String?
+    let address, city, state, postalCode: String?
+    let lat, lng: String?
+    let fid, gid: String?
+    let isStoppedRequest, isFbSignup, isGmailSignup, isManualSignup: Int?
+    let storeID, employeeStatusID: Int?
+    let signupPlatform, uniqueNo: Int?
+    let deviceType: Int?
+    let orderUpdatesNoti, promotionsDealNoti, newProductsNoti, deliveryInstallationNoti: Int?
+    let customerReviewRatingNoti: Int?
+
+    enum CodingKeys: String, CodingKey {
+        case id, fullname, avatar
+        case countryCode = "country_code"
+        case mobile
+        case deviceToken = "device_token"
+        case email, dob
+        case empID = "empId"
+        case gender, nationality
+        case emiratesID = "emirates_id"
+        case healthCard = "health_card"
+        case citizenshipCard = "citizenship_card"
+        case driverLicenseNum = "driver_license_num"
+        case emailVerifiedAt = "email_verified_at"
+        case otp
+        case otpExpireTime = "otp_expire_time"
+        case address, city, state
+        case postalCode = "postal_code"
+        case lat, lng, fid, gid, isStoppedRequest
+        case isFbSignup = "is_fb_signup"
+        case isGmailSignup = "is_gmail_signup"
+        case isManualSignup = "is_manual_signup"
+        case storeID = "store_id"
+        case employeeStatusID = "employee_status_id"
+        case signupPlatform = "signup_platform"
+        case uniqueNo = "unique_no"
+        case deviceType = "device_type"
+        case orderUpdatesNoti = "order_updates_noti"
+        case promotionsDealNoti = "promotions_deal_noti"
+        case newProductsNoti = "new_products_noti"
+        case deliveryInstallationNoti = "delivery_installation_noti"
+        case customerReviewRatingNoti = "customer_review_rating_noti"
+    }
+}

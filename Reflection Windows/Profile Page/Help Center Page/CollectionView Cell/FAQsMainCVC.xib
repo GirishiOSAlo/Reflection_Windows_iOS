@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="23094" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23084"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Poppins-Bold.ttf">
+            <string>Poppins-Bold</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="FAQsMainCVC" customModule="Reflection_Windows" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="358" height="111"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="358" height="111"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KeG-5g-gFU">
+                        <rect key="frame" x="10" y="10" width="338" height="91"/>
+                        <subviews>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l37-br-2Ll" userLabel="sectionTitleLbl">
+                                <rect key="frame" x="0.0" y="0.0" width="338" height="45"/>
+                                <color key="backgroundColor" systemColor="systemGray5Color"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="45" id="eQC-2b-OYV"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Poppins-Bold" family="Poppins" pointSize="20"/>
+                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="heightClass=regular-widthClass=regular">
+                                    <fontDescription key="fontDescription" name="Poppins-Bold" family="Poppins" pointSize="30"/>
+                                </variation>
+                            </label>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="uT2-It-5ZR">
+                                <rect key="frame" x="10" y="45" width="318" height="46"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="h1N-sf-0bI">
+                                    <size key="itemSize" width="128" height="128"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                            </collectionView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="l37-br-2Ll" firstAttribute="top" secondItem="KeG-5g-gFU" secondAttribute="top" id="0Yj-CD-ds1"/>
+                            <constraint firstAttribute="trailing" secondItem="uT2-It-5ZR" secondAttribute="trailing" constant="10" id="JPy-r0-gey">
+                                <variation key="heightClass=regular-widthClass=regular" constant="20"/>
+                            </constraint>
+                            <constraint firstItem="uT2-It-5ZR" firstAttribute="top" secondItem="l37-br-2Ll" secondAttribute="bottom" id="TB7-jE-3hi"/>
+                            <constraint firstItem="l37-br-2Ll" firstAttribute="leading" secondItem="KeG-5g-gFU" secondAttribute="leading" id="lDh-6s-l4R"/>
+                            <constraint firstItem="uT2-It-5ZR" firstAttribute="leading" secondItem="KeG-5g-gFU" secondAttribute="leading" constant="10" id="luY-99-nAs">
+                                <variation key="heightClass=regular-widthClass=regular" constant="20"/>
+                            </constraint>
+                            <constraint firstAttribute="bottom" secondItem="uT2-It-5ZR" secondAttribute="bottom" id="nfy-3S-xdq"/>
+                            <constraint firstAttribute="trailing" secondItem="l37-br-2Ll" secondAttribute="trailing" id="xSl-hs-x9S"/>
+                        </constraints>
+                    </view>
+                </subviews>
+            </view>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="KeG-5g-gFU" secondAttribute="bottom" constant="10" id="8QU-Fh-zM0">
+                    <variation key="heightClass=regular-widthClass=regular" constant="20"/>
+                </constraint>
+                <constraint firstItem="KeG-5g-gFU" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="10" id="hUt-qv-j9I">
+                    <variation key="heightClass=regular-widthClass=regular" constant="20"/>
+                </constraint>
+                <constraint firstItem="KeG-5g-gFU" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="10" id="jmN-xB-U49">
+                    <variation key="heightClass=regular-widthClass=regular" constant="20"/>
+                </constraint>
+                <constraint firstAttribute="trailing" secondItem="KeG-5g-gFU" secondAttribute="trailing" constant="10" id="vNf-Vd-Wvl">
+                    <variation key="heightClass=regular-widthClass=regular" constant="20"/>
+                </constraint>
+            </constraints>
+            <size key="customSize" width="358" height="111"/>
+            <connections>
+                <outlet property="baseView" destination="KeG-5g-gFU" id="mLM-Wt-aP1"/>
+                <outlet property="detailsCollectionVw" destination="uT2-It-5ZR" id="klo-7F-C8x"/>
+                <outlet property="sectionTitleLbl" destination="l37-br-2Ll" id="Xr3-sq-n29"/>
+                <outlet property="sectionTitleLblHeight" destination="eQC-2b-OYV" id="7gN-H3-EKi"/>
+            </connections>
+            <point key="canvasLocation" x="297.70992366412213" y="-11.619718309859156"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <systemColor name="systemGray5Color">
+            <color red="0.89803921568627454" green="0.89803921568627454" blue="0.91764705882352937" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>

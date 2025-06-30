@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="22155" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina5_9" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22131"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HomeTabBarVC" customModule="Reflection_Windows" customModuleProvider="target">
+            <connections>
+                <outlet property="cartView" destination="Grx-9W-SMG" id="wOI-YN-gxO"/>
+                <outlet property="contactView" destination="H1j-lp-gXN" id="7Nd-T1-APx"/>
+                <outlet property="container" destination="39c-8v-EEm" id="146-Om-O3C"/>
+                <outlet property="homeView" destination="GS0-6n-1pf" id="Xog-wi-3lw"/>
+                <outlet property="profileView" destination="6QK-XY-wHE" id="dDT-69-eP2"/>
+                <outlet property="tabbarVw" destination="Fek-wt-acg" id="y36-5s-DKT"/>
+                <outlet property="view" destination="zvM-fp-qKQ" id="TEn-5L-EM0"/>
+                <outlet property="wishListView" destination="bgu-4O-KLN" id="nuY-9b-01u"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="zvM-fp-qKQ">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="39c-8v-EEm">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="758"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                </view>
+                <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Fek-wt-acg" userLabel="Tabbar View">
+                    <rect key="frame" x="0.0" y="708" width="375" height="104"/>
+                    <subviews>
+                        <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="9JK-xU-X5d">
+                            <rect key="frame" x="30" y="0.0" width="315" height="70"/>
+                            <subviews>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GS0-6n-1pf" userLabel="Home" customClass="CustomTabView" customModule="Reflection_Windows" customModuleProvider="target">
+                                    <rect key="frame" x="0.0" y="0.0" width="63" height="70"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="string" keyPath="selectedImageName" value="home_selected"/>
+                                    </userDefinedRuntimeAttributes>
+                                </view>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bgu-4O-KLN" userLabel="Favourite" customClass="CustomTabView" customModule="Reflection_Windows" customModuleProvider="target">
+                                    <rect key="frame" x="63" y="0.0" width="63" height="70"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="string" keyPath="selectedImageName" value="favorite_selected"/>
+                                    </userDefinedRuntimeAttributes>
+                                </view>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Grx-9W-SMG" userLabel="Cart" customClass="CustomTabView" customModule="Reflection_Windows" customModuleProvider="target">
+                                    <rect key="frame" x="126" y="0.0" width="63" height="70"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="string" keyPath="selectedImageName" value="shopping_selected"/>
+                                    </userDefinedRuntimeAttributes>
+                                </view>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="H1j-lp-gXN" userLabel="Contact" customClass="CustomTabView" customModule="Reflection_Windows" customModuleProvider="target">
+                                    <rect key="frame" x="189" y="0.0" width="63" height="70"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="string" keyPath="selectedImageName" value="contact_selected"/>
+                                    </userDefinedRuntimeAttributes>
+                                </view>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6QK-XY-wHE" userLabel="Profile" customClass="CustomTabView" customModule="Reflection_Windows" customModuleProvider="target">
+                                    <rect key="frame" x="252" y="0.0" width="63" height="70"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="string" keyPath="selectedImageName" value="profile_selected"/>
+                                    </userDefinedRuntimeAttributes>
+                                </view>
+                            </subviews>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="70" id="ATm-pw-XXS"/>
+                            </constraints>
+                        </stackView>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="trailing" secondItem="9JK-xU-X5d" secondAttribute="trailing" constant="30" id="Gqp-Hg-IIA"/>
+                        <constraint firstItem="9JK-xU-X5d" firstAttribute="top" secondItem="Fek-wt-acg" secondAttribute="top" id="X4x-XO-Klb"/>
+                        <constraint firstItem="9JK-xU-X5d" firstAttribute="leading" secondItem="Fek-wt-acg" secondAttribute="leading" constant="30" id="e5Z-yb-2Qu"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="hW9-Fr-dDu"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="39c-8v-EEm" firstAttribute="leading" secondItem="zvM-fp-qKQ" secondAttribute="leading" id="8IK-iY-3EI"/>
+                <constraint firstItem="Fek-wt-acg" firstAttribute="bottom" secondItem="zvM-fp-qKQ" secondAttribute="bottom" id="AnO-53-OmM"/>
+                <constraint firstItem="hW9-Fr-dDu" firstAttribute="bottom" secondItem="9JK-xU-X5d" secondAttribute="bottom" id="ClS-NT-ZiX"/>
+                <constraint firstItem="Fek-wt-acg" firstAttribute="trailing" secondItem="zvM-fp-qKQ" secondAttribute="trailing" id="VkL-9S-o5I"/>
+                <constraint firstAttribute="trailing" secondItem="39c-8v-EEm" secondAttribute="trailing" id="eGQ-oQ-MiI"/>
+                <constraint firstItem="39c-8v-EEm" firstAttribute="top" secondItem="zvM-fp-qKQ" secondAttribute="top" id="h4L-dT-sdx"/>
+                <constraint firstItem="Fek-wt-acg" firstAttribute="leading" secondItem="zvM-fp-qKQ" secondAttribute="leading" id="pZk-RX-SAj"/>
+                <constraint firstItem="Fek-wt-acg" firstAttribute="top" secondItem="39c-8v-EEm" secondAttribute="bottom" constant="-50" id="qJe-2y-USP"/>
+            </constraints>
+            <point key="canvasLocation" x="136.80000000000001" y="62.807881773399018"/>
+        </view>
+    </objects>
+</document>

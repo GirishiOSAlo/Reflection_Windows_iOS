@@ -1,0 +1,357 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   uuid = "A6ADAA4E-573A-4A41-B722-E9131DD4E43D"
+   type = "1"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "E34CB1A5-01F1-4575-A1F1-EB989239BC44"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Reflection Windows/Customization Page/CustomizationVC.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "833"
+            endingLineNumber = "833"
+            landmarkName = "addToCartDataApiCall()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "E34CB1A5-01F1-4575-A1F1-EB989239BC44 - a6f92277f873de0d"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Reflection_Windows.CustomizationVC.addToCartDataApiCall() -&gt; ()"
+                  moduleName = "Reflection Windows"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/pragatirajput/Desktop/Appic%20Mobile/reflection-windows-ios/Reflection%20Windows/Customization%20Page/CustomizationVC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "834"
+                  endingLineNumber = "834"
+                  offsetFromSymbolStart = "4396">
+               </Location>
+               <Location
+                  uuid = "E34CB1A5-01F1-4575-A1F1-EB989239BC44 - a6f92277f873de32"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Reflection_Windows.CustomizationVC.addToCartDataApiCall() -&gt; ()"
+                  moduleName = "Reflection Windows"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/pragatirajput/Desktop/Appic%20Mobile/reflection-windows-ios/Reflection%20Windows/Customization%20Page/CustomizationVC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "833"
+                  endingLineNumber = "833"
+                  offsetFromSymbolStart = "4324">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "01F6A959-4766-48B1-9962-0AEF56B12D86"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Reflection Windows/Customization Page/CustomizationVC.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "809"
+            endingLineNumber = "809"
+            landmarkName = "addToCartDataApiCall()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "01F6A959-4766-48B1-9962-0AEF56B12D86 - a6f92277f873d94a"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Reflection_Windows.CustomizationVC.addToCartDataApiCall() -&gt; ()"
+                  moduleName = "Reflection Windows"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/pragatirajput/Desktop/Appic%20Mobile/reflection-windows-ios/Reflection%20Windows/Customization%20Page/CustomizationVC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "809"
+                  endingLineNumber = "809"
+                  offsetFromSymbolStart = "3048">
+               </Location>
+               <Location
+                  uuid = "01F6A959-4766-48B1-9962-0AEF56B12D86 - a6f92277f873d94a"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Reflection_Windows.CustomizationVC.addToCartDataApiCall() -&gt; ()"
+                  moduleName = "Reflection Windows"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/pragatirajput/Desktop/Appic%20Mobile/reflection-windows-ios/Reflection%20Windows/Customization%20Page/CustomizationVC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "809"
+                  endingLineNumber = "809"
+                  offsetFromSymbolStart = "3000">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "F12690EB-BDAB-409D-97F7-7CD15D2A415E"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Reflection Windows/Customization Page/CollectionView Cell/CustomizeWindowCVC.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "187"
+            endingLineNumber = "187"
+            landmarkName = "collectionView(_:didSelectItemAt:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "F12690EB-BDAB-409D-97F7-7CD15D2A415E - 8d63c89427a37476"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Reflection_Windows.CustomizeWindowCVC.collectionView(_: __C.UICollectionView, didSelectItemAt: Foundation.IndexPath) -&gt; ()"
+                  moduleName = "Reflection Windows"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/pragatirajput/Desktop/Appic%20Mobile/reflection-windows-ios/Reflection%20Windows/Customization%20Page/CollectionView%20Cell/CustomizeWindowCVC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "187"
+                  endingLineNumber = "187"
+                  offsetFromSymbolStart = "1104">
+               </Location>
+               <Location
+                  uuid = "F12690EB-BDAB-409D-97F7-7CD15D2A415E - 8d63c89427a37476"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Reflection_Windows.CustomizeWindowCVC.collectionView(_: __C.UICollectionView, didSelectItemAt: Foundation.IndexPath) -&gt; ()"
+                  moduleName = "Reflection Windows"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/pragatirajput/Desktop/Appic%20Mobile/reflection-windows-ios/Reflection%20Windows/Customization%20Page/CollectionView%20Cell/CustomizeWindowCVC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "187"
+                  endingLineNumber = "187"
+                  offsetFromSymbolStart = "176">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "AEF40E2F-3587-452A-82BD-555EDA27B945"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Reflection Windows/Customization Page/CollectionView Cell/CustomizeWindowCVC.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "150"
+            endingLineNumber = "150"
+            landmarkName = "collectionView(_:cellForItemAt:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "AEF40E2F-3587-452A-82BD-555EDA27B945 - 5e188158e43f5359"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Reflection_Windows.CustomizeWindowCVC.collectionView(_: __C.UICollectionView, cellForItemAt: Foundation.IndexPath) -&gt; __C.UICollectionViewCell"
+                  moduleName = "Reflection Windows"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/pragatirajput/Desktop/Appic%20Mobile/reflection-windows-ios/Reflection%20Windows/Customization%20Page/CollectionView%20Cell/CustomizeWindowCVC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "152"
+                  endingLineNumber = "152"
+                  offsetFromSymbolStart = "3788">
+               </Location>
+               <Location
+                  uuid = "AEF40E2F-3587-452A-82BD-555EDA27B945 - 5e188158e43f539b"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Reflection_Windows.CustomizeWindowCVC.collectionView(_: __C.UICollectionView, cellForItemAt: Foundation.IndexPath) -&gt; __C.UICollectionViewCell"
+                  moduleName = "Reflection Windows"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/pragatirajput/Desktop/Appic%20Mobile/reflection-windows-ios/Reflection%20Windows/Customization%20Page/CollectionView%20Cell/CustomizeWindowCVC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "150"
+                  endingLineNumber = "150"
+                  offsetFromSymbolStart = "2844">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "FA82F8D6-63EC-4493-BCCA-F8580DD8BF60"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Reflection Windows/Customization Page/CustomizationVC.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "1623"
+            endingLineNumber = "1623"
+            landmarkName = "collectionView(_:cellForItemAt:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "FA82F8D6-63EC-4493-BCCA-F8580DD8BF60 - 5df4c33d456fb8"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Reflection_Windows.CustomizationVC.collectionView(_: __C.UICollectionView, cellForItemAt: Foundation.IndexPath) -&gt; __C.UICollectionViewCell"
+                  moduleName = "Reflection Windows"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/pragatirajput/Desktop/Appic%20Mobile/reflection-windows-ios/Reflection%20Windows/Customization%20Page/CustomizationVC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "1623"
+                  endingLineNumber = "1623"
+                  offsetFromSymbolStart = "14660">
+               </Location>
+               <Location
+                  uuid = "FA82F8D6-63EC-4493-BCCA-F8580DD8BF60 - 5df4c33d456fb8"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Reflection_Windows.CustomizationVC.collectionView(_: __C.UICollectionView, cellForItemAt: Foundation.IndexPath) -&gt; __C.UICollectionViewCell"
+                  moduleName = "Reflection Windows"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/pragatirajput/Desktop/Appic%20Mobile/reflection-windows-ios/Reflection%20Windows/Customization%20Page/CustomizationVC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "1623"
+                  endingLineNumber = "1623"
+                  offsetFromSymbolStart = "14564">
+               </Location>
+               <Location
+                  uuid = "FA82F8D6-63EC-4493-BCCA-F8580DD8BF60 - 5df4c33d456fb8"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Reflection_Windows.CustomizationVC.collectionView(_: __C.UICollectionView, cellForItemAt: Foundation.IndexPath) -&gt; __C.UICollectionViewCell"
+                  moduleName = "Reflection Windows"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/pragatirajput/Desktop/Appic%20Mobile/reflection-windows-ios/Reflection%20Windows/Customization%20Page/CustomizationVC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "1623"
+                  endingLineNumber = "1623"
+                  offsetFromSymbolStart = "14600">
+               </Location>
+               <Location
+                  uuid = "FA82F8D6-63EC-4493-BCCA-F8580DD8BF60 - 5df4c33d456fb8"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Reflection_Windows.CustomizationVC.collectionView(_: __C.UICollectionView, cellForItemAt: Foundation.IndexPath) -&gt; __C.UICollectionViewCell"
+                  moduleName = "Reflection Windows"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/pragatirajput/Desktop/Appic%20Mobile/reflection-windows-ios/Reflection%20Windows/Customization%20Page/CustomizationVC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "1623"
+                  endingLineNumber = "1623"
+                  offsetFromSymbolStart = "14588">
+               </Location>
+               <Location
+                  uuid = "FA82F8D6-63EC-4493-BCCA-F8580DD8BF60 - 5df4c33d456fb8"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Reflection_Windows.CustomizationVC.collectionView(_: __C.UICollectionView, cellForItemAt: Foundation.IndexPath) -&gt; __C.UICollectionViewCell"
+                  moduleName = "Reflection Windows"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/pragatirajput/Desktop/Appic%20Mobile/reflection-windows-ios/Reflection%20Windows/Customization%20Page/CustomizationVC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "1623"
+                  endingLineNumber = "1623"
+                  offsetFromSymbolStart = "14592">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "E2EE2BFB-3154-4508-9893-0D2B466D760B"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Reflection Windows/Customization Page/CollectionView Cell/CustomizeWindowCVC.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "198"
+            endingLineNumber = "198"
+            landmarkName = "collectionView(_:didSelectItemAt:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "B594D690-24F4-4890-8587-50E209D77B3D"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Reflection Windows/Customization Page/CustomizationVC.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "1987"
+            endingLineNumber = "1987"
+            landmarkName = "collectionView(_:didSelectItemAt:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "FF43856D-1D01-416E-ABB1-C93176098914"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Reflection Windows/Customization Page/CustomizationVC.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "1659"
+            endingLineNumber = "1659"
+            landmarkName = "collectionView(_:cellForItemAt:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "3D2C1D0B-04D7-49E3-953D-A770BD290B46"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Reflection Windows/Customization Page/CollectionView Cell/CustomizeWindowCVC.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "78"
+            endingLineNumber = "78"
+            landmarkName = "initUI()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>

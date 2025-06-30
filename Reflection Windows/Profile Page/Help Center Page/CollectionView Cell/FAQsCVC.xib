@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="23094" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23084"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Poppins-Medium.ttf">
+            <string>Poppins-Medium</string>
+        </array>
+        <array key="Poppins-Regular.ttf">
+            <string>Poppins-Regular</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="FAQsCVC" customModule="Reflection_Windows" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="342" height="132"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="342" height="132"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Rau-vo-AnJ">
+                        <rect key="frame" x="0.0" y="10" width="342" height="112"/>
+                        <subviews>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aio-v0-eB3">
+                                <rect key="frame" x="5" y="0.0" width="332" height="20"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" name="Poppins-Medium" family="Poppins" pointSize="17"/>
+                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="heightClass=regular-widthClass=regular">
+                                    <fontDescription key="fontDescription" name="Poppins-Medium" family="Poppins" pointSize="25"/>
+                                </variation>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YCi-5e-KPC">
+                                <rect key="frame" x="10" y="30" width="327" height="17.666666666666671"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="15"/>
+                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="heightClass=regular-widthClass=regular">
+                                    <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="22"/>
+                                </variation>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="aio-v0-eB3" secondAttribute="trailing" constant="5" id="WaR-M2-GRc">
+                                <variation key="heightClass=regular-widthClass=regular" constant="10"/>
+                            </constraint>
+                            <constraint firstItem="aio-v0-eB3" firstAttribute="leading" secondItem="Rau-vo-AnJ" secondAttribute="leading" constant="5" id="Wgu-m5-MFV">
+                                <variation key="heightClass=regular-widthClass=regular" constant="10"/>
+                            </constraint>
+                            <constraint firstItem="YCi-5e-KPC" firstAttribute="top" secondItem="aio-v0-eB3" secondAttribute="bottom" constant="10" id="YcI-3S-anB">
+                                <variation key="heightClass=regular-widthClass=regular" constant="20"/>
+                            </constraint>
+                            <constraint firstAttribute="trailing" secondItem="YCi-5e-KPC" secondAttribute="trailing" constant="5" id="rg1-9N-Iq3">
+                                <variation key="heightClass=regular-widthClass=regular" constant="10"/>
+                            </constraint>
+                            <constraint firstItem="aio-v0-eB3" firstAttribute="top" secondItem="Rau-vo-AnJ" secondAttribute="top" id="srL-Y2-jFv"/>
+                            <constraint firstItem="YCi-5e-KPC" firstAttribute="leading" secondItem="Rau-vo-AnJ" secondAttribute="leading" constant="10" id="u95-Rd-sv9">
+                                <variation key="heightClass=regular-widthClass=regular" constant="20"/>
+                            </constraint>
+                        </constraints>
+                    </view>
+                </subviews>
+            </view>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="Rau-vo-AnJ" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="10" id="UoC-hp-P3y">
+                    <variation key="heightClass=regular-widthClass=regular" constant="20"/>
+                </constraint>
+                <constraint firstAttribute="bottom" secondItem="Rau-vo-AnJ" secondAttribute="bottom" constant="10" id="fB7-LV-BDC">
+                    <variation key="heightClass=regular-widthClass=regular" constant="20"/>
+                </constraint>
+                <constraint firstItem="Rau-vo-AnJ" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="mLT-8d-9AV"/>
+                <constraint firstAttribute="trailing" secondItem="Rau-vo-AnJ" secondAttribute="trailing" id="rJs-vB-RTb"/>
+            </constraints>
+            <size key="customSize" width="342" height="132"/>
+            <connections>
+                <outlet property="baseView" destination="Rau-vo-AnJ" id="fXq-Rd-8F1"/>
+                <outlet property="descLbl" destination="YCi-5e-KPC" id="dXc-wh-fyB"/>
+                <outlet property="titleLbl" destination="aio-v0-eB3" id="eca-Cs-Y2T"/>
+            </connections>
+            <point key="canvasLocation" x="285.49618320610688" y="-4.2253521126760569"/>
+        </collectionViewCell>
+    </objects>
+</document>

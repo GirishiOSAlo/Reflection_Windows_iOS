@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   uuid = "6FD24D6B-9F53-4B20-801F-C4D8E0F4B1EF"
+   type = "1"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "0641F54A-3B2F-471A-B067-ADB0E6B2E033"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Reflection Windows/Customization Page/CustomizationVC.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "1505"
+            endingLineNumber = "1505"
+            landmarkName = "imageUpdate(baseURL:categoryId:productId:glassId:glassOption:colorId:glassAlreadySelected:isGlassSelection:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "F85299EC-6D48-4BE6-9D74-F19ED8024BDF"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Reflection Windows/Profile Page/ProfileViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "318"
+            endingLineNumber = "318"
+            landmarkName = "validateDeleteOtp(otp:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "F85299EC-6D48-4BE6-9D74-F19ED8024BDF - 9361fcfb36fa92ed"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Reflection_Windows.ProfileViewController.validateDeleteOtp(otp: Swift.String) -&gt; ()"
+                  moduleName = "Reflection Windows"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/pranaybarua/Documents/GitHub/reflection-windows-ios/Reflection%20Windows/Profile%20Page/ProfileViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "320"
+                  endingLineNumber = "320"
+                  offsetFromSymbolStart = "2204">
+               </Location>
+               <Location
+                  uuid = "F85299EC-6D48-4BE6-9D74-F19ED8024BDF - 94c33993f1db3b7a"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Reflection_Windows.ProfileViewController.validateDeleteOtp(otp: Swift.Int) -&gt; ()"
+                  moduleName = "Reflection Windows"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/pranaybarua/Documents/GitHub/reflection-windows-ios/Reflection%20Windows/Profile%20Page/ProfileViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "318"
+                  endingLineNumber = "318"
+                  offsetFromSymbolStart = "1904">
+               </Location>
+               <Location
+                  uuid = "F85299EC-6D48-4BE6-9D74-F19ED8024BDF - 94c33993f1db3b7a"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Reflection_Windows.ProfileViewController.validateDeleteOtp(otp: Swift.Int) -&gt; ()"
+                  moduleName = "Reflection Windows"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/pranaybarua/Documents/GitHub/reflection-windows-ios/Reflection%20Windows/Profile%20Page/ProfileViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "318"
+                  endingLineNumber = "318"
+                  offsetFromSymbolStart = "1964">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "2A12F9EB-8F01-4DCA-8BC1-3BE699719169"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Reflection Windows/Profile Page/ProfileViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "340"
+            endingLineNumber = "340"
+            landmarkName = "validateDeleteOtp(otp:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "2A12F9EB-8F01-4DCA-8BC1-3BE699719169 - cc95e8e63c993899"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #2 @Swift.MainActor () -&gt; () in closure #1 @Sendable (Swift.Optional&lt;Foundation.Data&gt;, Swift.Optional&lt;__C.NSURLResponse&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in Reflection_Windows.ProfileViewController.validateDeleteOtp(otp: Swift.Int) -&gt; ()"
+                  moduleName = "Reflection Windows"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/pranaybarua/Documents/GitHub/reflection-windows-ios/Reflection%20Windows/Profile%20Page/ProfileViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "353"
+                  endingLineNumber = "353"
+                  offsetFromSymbolStart = "88">
+               </Location>
+               <Location
+                  uuid = "2A12F9EB-8F01-4DCA-8BC1-3BE699719169 - b04864038001226a"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 @Sendable (Swift.Optional&lt;Foundation.Data&gt;, Swift.Optional&lt;__C.NSURLResponse&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in Reflection_Windows.ProfileViewController.validateDeleteOtp(otp: Swift.Int) -&gt; ()"
+                  moduleName = "Reflection Windows"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/pranaybarua/Documents/GitHub/reflection-windows-ios/Reflection%20Windows/Profile%20Page/ProfileViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "340"
+                  endingLineNumber = "340"
+                  offsetFromSymbolStart = "2016">
+               </Location>
+               <Location
+                  uuid = "2A12F9EB-8F01-4DCA-8BC1-3BE699719169 - cc95e8e63c9938b8"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #2 @Swift.MainActor () -&gt; () in closure #1 @Sendable (Swift.Optional&lt;Foundation.Data&gt;, Swift.Optional&lt;__C.NSURLResponse&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in Reflection_Windows.ProfileViewController.validateDeleteOtp(otp: Swift.Int) -&gt; ()"
+                  moduleName = "Reflection Windows"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/pranaybarua/Documents/GitHub/reflection-windows-ios/Reflection%20Windows/Profile%20Page/ProfileViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "354"
+                  endingLineNumber = "354"
+                  offsetFromSymbolStart = "88">
+               </Location>
+               <Location
+                  uuid = "2A12F9EB-8F01-4DCA-8BC1-3BE699719169 - b04864038001226a"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 @Sendable (Swift.Optional&lt;Foundation.Data&gt;, Swift.Optional&lt;__C.NSURLResponse&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in Reflection_Windows.ProfileViewController.validateDeleteOtp(otp: Swift.Int) -&gt; ()"
+                  moduleName = "Reflection Windows"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/pranaybarua/Documents/GitHub/reflection-windows-ios/Reflection%20Windows/Profile%20Page/ProfileViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "340"
+                  endingLineNumber = "340"
+                  offsetFromSymbolStart = "2076">
+               </Location>
+               <Location
+                  uuid = "2A12F9EB-8F01-4DCA-8BC1-3BE699719169 - cc95e8e63c992605"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #2 @Swift.MainActor () -&gt; () in closure #1 @Sendable (Swift.Optional&lt;Foundation.Data&gt;, Swift.Optional&lt;__C.NSURLResponse&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in Reflection_Windows.ProfileViewController.validateDeleteOtp(otp: Swift.Int) -&gt; ()"
+                  moduleName = "Reflection Windows"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/pranaybarua/Documents/GitHub/reflection-windows-ios/Reflection%20Windows/Profile%20Page/ProfileViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "341"
+                  endingLineNumber = "341"
+                  offsetFromSymbolStart = "88">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "ECB6F79F-6C46-4B7A-9A42-743BAF85FC8C"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Reflection Windows/Customization Page/CustomizationVC.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "1940"
+            endingLineNumber = "1940"
+            landmarkName = "renderer(_:didAdd:for:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>

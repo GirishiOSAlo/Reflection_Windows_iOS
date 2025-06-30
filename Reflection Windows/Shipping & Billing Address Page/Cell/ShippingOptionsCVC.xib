@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="23094" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23084"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Poppins-Regular.ttf">
+            <string>Poppins-Regular</string>
+        </array>
+        <array key="Poppins-SemiBold.ttf">
+            <string>Poppins-SemiBold</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="ShippingOptionsCVC" customModule="Reflection_Windows" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="335" height="80"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="335" height="80"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gsc-vK-vBw">
+                        <rect key="frame" x="0.0" y="5" width="335" height="70"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_radioUnselect" translatesAutoresizingMaskIntoConstraints="NO" id="282-5q-jkO">
+                                <rect key="frame" x="10" y="27" width="16" height="16"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="282-5q-jkO" secondAttribute="height" multiplier="1:1" id="R8V-yE-gh7"/>
+                                    <constraint firstAttribute="width" constant="16" id="Ybc-8O-qQe">
+                                        <variation key="heightClass=regular-widthClass=regular" constant="26"/>
+                                    </constraint>
+                                </constraints>
+                            </imageView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="zsd-sN-efd">
+                                <rect key="frame" x="36" y="10" width="289" height="50"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tuesday, Dec 8" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gnt-TK-Kvf">
+                                        <rect key="frame" x="0.0" y="0.0" width="107.66666666666667" height="33"/>
+                                        <fontDescription key="fontDescription" name="Poppins-SemiBold" family="Poppins" pointSize="14"/>
+                                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                        <variation key="heightClass=regular-widthClass=regular">
+                                            <fontDescription key="fontDescription" name="Poppins-SemiBold" family="Poppins" pointSize="20"/>
+                                        </variation>
+                                    </label>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="EqQ-UW-4x6">
+                                        <rect key="frame" x="0.0" y="33" width="148.33333333333334" height="17"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="FREE" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qad-LG-5kP">
+                                                <rect key="frame" x="0.0" y="0.0" width="27" height="17"/>
+                                                <fontDescription key="fontDescription" name="Poppins-SemiBold" family="Poppins" pointSize="12"/>
+                                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="highlightedColor"/>
+                                                <variation key="heightClass=regular-widthClass=regular">
+                                                    <fontDescription key="fontDescription" name="Poppins-SemiBold" family="Poppins" pointSize="16"/>
+                                                </variation>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="- Standard Delivery" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GgL-ld-o4F">
+                                                <rect key="frame" x="31.999999999999993" y="0.0" width="116.33333333333331" height="17"/>
+                                                <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="12"/>
+                                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="highlightedColor"/>
+                                                <variation key="heightClass=regular-widthClass=regular">
+                                                    <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="16"/>
+                                                </variation>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <variation key="heightClass=regular-widthClass=regular" spacing="10"/>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="282-5q-jkO" firstAttribute="leading" secondItem="gsc-vK-vBw" secondAttribute="leading" constant="10" id="Fmp-dC-8D1">
+                                <variation key="heightClass=regular-widthClass=regular" constant="20"/>
+                            </constraint>
+                            <constraint firstItem="zsd-sN-efd" firstAttribute="leading" secondItem="282-5q-jkO" secondAttribute="trailing" constant="10" id="J8B-Ye-2AB">
+                                <variation key="heightClass=regular-widthClass=regular" constant="20"/>
+                            </constraint>
+                            <constraint firstItem="282-5q-jkO" firstAttribute="centerY" secondItem="gsc-vK-vBw" secondAttribute="centerY" id="OMB-b5-KoA"/>
+                            <constraint firstAttribute="trailing" secondItem="zsd-sN-efd" secondAttribute="trailing" constant="10" id="QCa-O5-rdQ">
+                                <variation key="heightClass=regular-widthClass=regular" constant="20"/>
+                            </constraint>
+                            <constraint firstAttribute="bottom" secondItem="zsd-sN-efd" secondAttribute="bottom" constant="10" id="Yad-CD-bH4">
+                                <variation key="heightClass=regular-widthClass=regular" constant="20"/>
+                            </constraint>
+                            <constraint firstItem="zsd-sN-efd" firstAttribute="top" secondItem="gsc-vK-vBw" secondAttribute="top" constant="10" id="pQj-AX-Nxo">
+                                <variation key="heightClass=regular-widthClass=regular" constant="20"/>
+                            </constraint>
+                        </constraints>
+                    </view>
+                </subviews>
+            </view>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="gsc-vK-vBw" secondAttribute="trailing" id="1bq-O0-HCR"/>
+                <constraint firstItem="gsc-vK-vBw" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="Bhe-Yj-htt"/>
+                <constraint firstAttribute="bottom" secondItem="gsc-vK-vBw" secondAttribute="bottom" constant="5" id="MBO-B9-Mdb"/>
+                <constraint firstItem="gsc-vK-vBw" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="5" id="xMl-yf-2SR"/>
+            </constraints>
+            <size key="customSize" width="308" height="130"/>
+            <connections>
+                <outlet property="baseView" destination="gsc-vK-vBw" id="lxn-P4-oI6"/>
+                <outlet property="radioImgVw" destination="282-5q-jkO" id="oz9-rL-V7p"/>
+                <outlet property="subTitleDesLbl" destination="GgL-ld-o4F" id="U0e-26-VUo"/>
+                <outlet property="subTitleLbl" destination="Qad-LG-5kP" id="uSm-2F-fkA"/>
+                <outlet property="titleLbl" destination="gnt-TK-Kvf" id="m80-ap-cJM"/>
+            </connections>
+            <point key="canvasLocation" x="267.93893129770993" y="-4.9295774647887329"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="ic_radioUnselect" width="16" height="16"/>
+    </resources>
+</document>
