@@ -2278,7 +2278,6 @@ consectetur nisi ab fuga eius</string>
             <variation key="default">
                 <mask key="subviews">
                     <exclude reference="466-Em-OkZ"/>
-                    <exclude reference="HPe-sY-M9p"/>
                 </mask>
             </variation>
             <point key="canvasLocation" x="46.875" y="-34.859154929577464"/>
