@@ -164,8 +164,8 @@ class ContactsViewController: UIViewController, XIBed {
     
     
     @IBAction func onDetectHoleBtnTap(_ sender: UIButton) {
-        let vc = DetectHoleVC.instantiate()
-        self.navigationController?.pushViewController(vc, animated: false)
+//        let vc = DetectHoleVC.instantiate()
+//        self.navigationController?.pushViewController(vc, animated: false)
     }
     
     func callZipCallApi(zipcode: String) {

@@ -1,4 +1,3 @@
-@ -1,1203 +0,0 @@
 //
 //  ARViewController.swift
 //  Reflection Windows
@@ -7,6 +6,9 @@
 //
 
 import UIKit
+//import SceneKit
+import ARKit
+import RealityKit
 import SVProgressHUD
 
 class ARViewController: UIViewController, XIBed {
@@ -20,11 +22,11 @@ class ARViewController: UIViewController, XIBed {
     
 //    var arView: ARView!
     var isWindowAdded = false
-    var imageNsode: SCNNoadadde? // Global reference to store the placed image
+    var imageNode: SCNNode? // Global reference to store the placed image
     var modelEntity: Entity?
     var path = ""
-    var viewfinderEtgntity: ModelsEntity?
-    var planeIndicatorEantity: ModedlEntity?
+    var viewfinderEntity: ModelEntity?
+    var planeIndicatorEntity: ModelEntity?
     var viewfinder: UIView!
     var depthLabel: UILabel!
     var initialTouchSide: String? = nil
@@ -61,26 +63,27 @@ class ARViewController: UIViewController, XIBed {
     }
     
     func setupArkit(){
+        downloadModel()
         arView.automaticallyConfigureSession = false
         arView.session.pause()
-        let configurastion = ARWorldTrackingConfiguration()
-        confiSCCguration.environmentTexturing = .manual  // Instead of .manual
-        configurVSation.copy() = [.vertical]
-        confiAguration.isLightEstimationEnabled = false  // Disable light estimation
+        let configuration = ARWorldTrackingConfiguration()
+        configuration.environmentTexturing = .none  // Instead of .manual
+        configuration.planeDetection = [.vertical]
+        configuration.isLightEstimationEnabled = false  // Disable light estimation
         
         self.arView.renderOptions = [.disableAREnvironmentLighting]
-        arView.debugOptions = [.showFeaturePoints]
-        arView.session.run(configuration)
+//        arView.debugOptions = [.showFeaturePoints]
+//        arView.session.run(configuration)
         arView.automaticallyConfigureSession = false
         
-         Run the new configuration **without** resetting tracking
+        // Run the new configuration **without** resetting tracking
             arView.session.run(configuration, options: [])
-        arView.session.run(configuration, options: [.resetTracking, .removeExistingAnchors])
+//        arView.session.run(configuration, options: [.resetTracking, .removeExistingAnchors])
         
-         Add pinch gesture recognizer for zooming
+        // Add pinch gesture recognizer for zooming
         let pinchGesture = UIPinchGestureRecognizer(target: self, action: #selector(handlePinch(_:)))
         arView.addGestureRecognizer(pinchGesture)
-        setupViewfinder()
+//        setupViewfinder()
         addViewfinder()
         addDepthLabel()
         // 5. Start Depth Checking
@@ -97,29 +100,29 @@ class ARViewController: UIViewController, XIBed {
         StretchGesture.minimumNumberOfTouches = 3
         arView.addGestureRecognizer(StretchGesture)
     }
-    func setupArkit() {
-        downloadModel()
-        addViewfinder()
-        addDepthLabel()
-        Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(checkDepth), userInfo: nil, repeats: true)
-        arView.automaticallyConfigureSession = false
-        arView.session.pause()
-
-        let configuration = ARWorldTrackingConfiguration()
-        configuration.environmentTexturing = .none  // ⬅️ Changed from .manual
-        configuration.planeDetection = [.vertical]
-        configuration.isLightEstimationEnabled = false  // ⬅️ Disable light estimation
-
-        self.arView.renderOptions = [
-            .disableAREnvironmentLighting,
-            .disableHDR,
-            .disableMotionBlur,
-            .disableDepthOfField
-        ]  // ⬅️ Expanded render options
-
-        arView.session.run(configuration, options: [])
-        // ... rest of your setup code ...
-    }
+//    func setupArkit() {
+//        downloadModel()
+//        addViewfinder()
+//        addDepthLabel()
+//        Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(checkDepth), userInfo: nil, repeats: true)
+//        arView.automaticallyConfigureSession = false
+//        arView.session.pause()
+//        
+//        let configuration = ARWorldTrackingConfiguration()
+//        configuration.environmentTexturing = .none  // ⬅️ Changed from .manual
+//        configuration.planeDetection = [.vertical]
+//        configuration.isLightEstimationEnabled = false  // ⬅️ Disable light estimation
+//        
+//        self.arView.renderOptions = [
+//            .disableAREnvironmentLighting,
+//            .disableHDR,
+//            .disableMotionBlur,
+//            .disableDepthOfField
+//        ]  // ⬅️ Expanded render options
+//        
+//        arView.session.run(configuration, options: [])
+//        // ... rest of your setup code ...
+//    }
     
     func addDimDirectionalLight() {
         let lightEntity = Entity()
@@ -157,20 +160,20 @@ class ARViewController: UIViewController, XIBed {
         viewfinder.addSubview(depthLabel)
     }
     
-    @objc func checkDepth() {
-        guard let raycastResult = arView.raycast(from: viewfinder.center, allowing: .estimatedPlane, alignment: .any).first else {
-            depthLabel.text = "Depth: N/A"
-            return
-        }
-
-        let depth = raycastResult.worldTransform.position.z
-        depthLabel.text = String(format: "Depth: %.2f m", depth)
-
-        // Hide viewfinder when depth is detected
-        if depth < 2.0 { // Example: Hide if object is within 2 meters
-            viewfinder.isHidden = true
-        }
-    }
+//    @objc func checkDepth() {
+//        guard let raycastResult = arView.raycast(from: viewfinder.center, allowing: .estimatedPlane, alignment: .any).first else {
+//            depthLabel.text = "Depth: N/A"
+//            return
+//        }
+//        
+//        let depth = raycastResult.worldTransform.position.z
+//        depthLabel.text = String(format: "Depth: %.2f m", depth)
+//        
+//        // Hide viewfinder when depth is detected
+//        if depth < 2.0 { // Example: Hide if object is within 2 meters
+//            viewfinder.isHidden = true
+//        }
+//    }
     
     @objc func checkDepth() {
         let screenCenter = CGPoint(x: view.bounds.midX, y: view.bounds.midY)
@@ -197,28 +200,28 @@ class ARViewController: UIViewController, XIBed {
         }
     }
     
-    func showPlaneIndicator(at hitResult: ARRaycastResult) {
-        if planeIndicatorEntity == nil {
-            // Create a semi-transparent green plane
-            let mesh = MeshResource.generatePlane(width: 0.2, depth: 0.2)
-            let material = SimpleMaterial(color: UIColor.green.withAlphaComponent(0.5), isMetallic: false)
-            planeIndicatorEntity = ModelEntity(mesh: mesh, materials: [material])
-
-            // Create an anchor to attach the entity
-            let anchorEntity = AnchorEntity(world: hitResult.worldTransform.translation)
-            anchorEntity.addChild(planeIndicatorEntity!)
-            arView.scene.addAnchor(anchorEntity)
-        }
-
-        // Update the indicator position
-        planeIndicatorEntity?.transform.translation = hitResult.worldTransform.translation
-
-        // Optional: Add a subtle animation for better feedback
-        planeIndicatorEntity?.transform.scale = SIMD3<Float>(1.05, 1.05, 1.0)
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
-            self.planeIndicatorEntity?.transform.scale = SIMD3<Float>(1.0, 1.0, 1.0)
-        }
-    }
+//    func showPlaneIndicator(at hitResult: ARRaycastResult) {
+//        if planeIndicatorEntity == nil {
+//            // Create a semi-transparent green plane
+//            let mesh = MeshResource.generatePlane(width: 0.2, depth: 0.2)
+//            let material = SimpleMaterial(color: UIColor.green.withAlphaComponent(0.5), isMetallic: false)
+//            planeIndicatorEntity = ModelEntity(mesh: mesh, materials: [material])
+//
+//            // Create an anchor to attach the entity
+//            let anchorEntity = AnchorEntity(world: hitResult.worldTransform.translation)
+//            anchorEntity.addChild(planeIndicatorEntity!)
+//            arView.scene.addAnchor(anchorEntity)
+//        }
+//        
+//        // Update the indicator position
+//        planeIndicatorEntity?.transform.translation = hitResult.worldTransform.translation
+//
+//        // Optional: Add a subtle animation for better feedback
+//        planeIndicatorEntity?.transform.scale = SIMD3<Float>(1.05, 1.05, 1.0)
+//        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+//            self.planeIndicatorEntity?.transform.scale = SIMD3<Float>(1.0, 1.0, 1.0)
+//        }
+//    }
 
     
     func setupViewfinder() {
@@ -246,48 +249,107 @@ class ARViewController: UIViewController, XIBed {
     }
 
     
-    func downloadModel() {
-            do {
-                modelEntity = try Entity.loadModel(named: "cc_Window_1_Green.usdz")
-                 Create an anchor entity at the detected plane's position
-                // Rotate the model 90 degrees around the Y-axis
-                let rotationAngle = -Float.pi / 2 // 90 degrees in radians
-                let rotationAxis = SIMD3<Float>(1, 0, 0) // Y-axis
-                let rotation = simd_quatf(angle: rotationAngle, axis: rotationAxis)
-                modelEntity!.transform.rotation = rotation
+//    func loadModel() {
+//            do {
+//                modelEntity = try Entity.loadModel(named: "cc_Window_1_Green.usdz")
+//                // Create an anchor entity at the detected plane's position
+////                // Rotate the model 90 degrees around the Y-axis
+////                let rotationAngle = -Float.pi / 2 // 90 degrees in radians
+////                let rotationAxis = SIMD3<Float>(1, 0, 0) // Y-axis
+////                let rotation = simd_quatf(angle: rotationAngle, axis: rotationAxis)
+////                modelEntity!.transform.rotation = rotation
+////                
+////                let anchorEntity = AnchorEntity(world: transform)
+////                // Add the model to the anchor entity
+////                anchorEntity.addChild(modelEntity!)
+////                // Add the anchor entity to the scene
+////                arView.scene.addAnchor(anchorEntity)
+//                
+//                let anchorEntity = AnchorEntity(world: [0, -0.5, -2]) // 1 meter in front of the camera
+//                anchorEntity.addChild(modelEntity!)
+//                arView.scene.addAnchor(anchorEntity)
+//            } catch {
+//                print("Failed to load model: \(error.localizedDescription)")
+//            }
+//        }
+    
+//    private func downloadModel() {
+//        SVProgressHUD.show()
+//        let url = URL(string: "https://reflectionwindow.s3.us-east-2.amazonaws.com/images/products/2/3/2/16/ar.usdz")
+//        let documentsUrl = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
+//        let destinationUrl = documentsUrl.appendingPathComponent(url!.lastPathComponent)
+//        let session = URLSession(configuration: URLSessionConfiguration.default, delegate: nil, delegateQueue: nil)
+//        var request = URLRequest(url: url!)
+//        request.httpMethod = "GET"
+//        let downloadTask = session.downloadTask(with: request, completionHandler: { (location:URL?, response:URLResponse?, error:Error?) -> Void in
+//            let fileManager = FileManager.default
+//            if fileManager.fileExists(atPath: destinationUrl.path) {
+//                try! fileManager.removeItem(atPath: destinationUrl.path)
+//            }
+//            try! fileManager.moveItem(atPath: location!.path, toPath: destinationUrl.path)
+//            self.path = destinationUrl.path
+//            SVProgressHUD.dismiss()
+//        })
+//        downloadTask.resume()
+//    }
+    private func downloadModel() {
+        SVProgressHUD.show(withStatus: "Downloading model...")
 
-                let anchorEntity = AnchorEntity(world: transform)
-                // Add the model to the anchor entity
-                anchorEntity.addChild(modelEntity!)
-                // Add the anchor entity to the scene
-                arView.scene.addAnchor(anchorEntity)
+        guard let url = URL(string: self.productModelURL) else {
+            print("❌ Invalid URL")
+            return
+        }
 
-                let anchorEntity = AnchorEntity(world: [0, -0.5, -2]) // 1 meter in front of the camera
-                anchorEntity.addChild(modelEntity!)
-                arView.scene.addAnchor(anchorEntity)
-            } catch {
-                print("Failed to load model: \(error.localizedDescription)")
+        let documentsUrl = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
+        let destinationUrl = documentsUrl.appendingPathComponent(url.lastPathComponent)
+        
+        var request = URLRequest(url: url)
+        request.httpMethod = "GET"
+        request.timeoutInterval = 20  // ⏳ Set a timeout of 30 seconds
+
+        let session = URLSession(configuration: .default)
+        let downloadTask = session.downloadTask(with: request) { (location, response, error) in
+            DispatchQueue.main.async {
+                SVProgressHUD.dismiss()
+
+                if let error = error {
+                    print("❌ Download failed: \(error.localizedDescription)")
+                    SVProgressHUD.showError(withStatus: "Download failed. Please try again.")
+                    return
+                }
+
+                guard let location = location else {
+                    print("❌ Download failed: No file location")
+                    SVProgressHUD.showError(withStatus: "Download failed.")
+                    return
+                }
+
+                let fileManager = FileManager.default
+                do {
+                    if fileManager.fileExists(atPath: destinationUrl.path) {
+                        try fileManager.removeItem(at: destinationUrl)
+                    }
+                    try fileManager.moveItem(at: location, to: destinationUrl)
+                    self.path = destinationUrl.path
+                    print("✅ Model downloaded successfully to: \(destinationUrl.path)")
+                    SVProgressHUD.showSuccess(withStatus: "Download complete!")
+                } catch {
+                    print("❌ Error saving file: \(error.localizedDescription)")
+                    SVProgressHUD.showError(withStatus: "Failed to save model.")
+                }
             }
         }
-    
-    private func downloadModel() {
-        SVProgressHUD.show()
-        let url = URL(string: "https://reflectionwindow.s3.us-east-2.amazonaws.com/images/products/2/3/2/16/ar.usdz")
-        let documentsUrl = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
-        let destinationUrl = documentsUrl.appendingPathComponent(url!.lastPathComponent)
-        let session = URLSession(configuration: URLSessionConfiguration.default, delegate: nil, delegateQueue: nil)
-        var request = URLRequest(url: url!)
-        request.httpMethod = "GET"
-        let downloadTask = session.downloadTask(with: request, completionHandler: { (location:URL?, response:URLResponse?, error:Error?) -> Void in
-            let fileManager = FileManager.default
-            if fileManager.fileExists(atPath: destinationUrl.path) {
-                try! fileManager.removeItem(atPath: destinationUrl.path)
-            }
-            try! fileManager.moveItem(atPath: location!.path, toPath: destinationUrl.path)
-            self.path = destinationUrl.path
-            SVProgressHUD.dismiss()
-        })
+
         downloadTask.resume()
+
+        // ⏳ Dismiss after 30 seconds if download takes too long
+        DispatchQueue.main.asyncAfter(deadline: .now() + 20) {
+            if SVProgressHUD.isVisible() {
+                SVProgressHUD.dismiss()
+                SVProgressHUD.showError(withStatus: "Download took too long. Check your internet.")
+                downloadTask.cancel()  // Cancel the request
+            }
+        }
     }
     
     func loadUszdModel(path: String) {
@@ -370,144 +432,144 @@ class ARViewController: UIViewController, XIBed {
         gesture.scale = 1
     }
         
-    @objc func handleRotation(_ gesture: UIRotationGestureRecognizer) {
-        guard let modelEntity = modelEntity else { return }
-
-        // Get the current rotation of the model
-        let currentRotation = modelEntity.transform.rotation
-
-        // Calculate the new rotation based on the rotation gesture
-        let newRotation = simd_quatf(angle: Float(gesture.rotation), axis: [0, 1, 0]) // Rotate around the Y-axis
-
-        // Apply the new rotation to the model
-        modelEntity.transform.rotation = newRotation * currentRotation
-
-        // Reset the gesture rotation to 0 to avoid exponential rotation
-        gesture.rotation = 0
-    }
-    @objc func handleRotation(_ gesture: UIRotationGestureRecognizer) {
-        guard let modelEntity = modelEntity else { return }
-
-        switch gesture.state {
-        case .began, .changed:
-            // Get the current rotation
-            let currentRotation = modelEntity.transform.rotation
-
-            // Get rotation angles from the gesture
-            let rotationX = Float(gesture.rotation) * 0.5  // Adjust factor for smoothness
-            let rotationY = Float(gesture.velocity) * 0.01 // Y-axis based on velocity
-
-            // Create rotation quaternions
-            let newRotationX = simd_quatf(angle: rotationX, axis: [1, 0, 0]) // X-axis rotation
-            let newRotationY = simd_quatf(angle: rotationY, axis: [0, 1, 0]) // Y-axis rotation
-
-            // Combine rotations
-            modelEntity.transform.rotation = newRotationX * newRotationY * currentRotation
-
-            // Reset gesture rotation to avoid exponential rotations
-            gesture.rotation = 0
-
-        default:
-            break
-        }
-    }
+//    @objc func handleRotation(_ gesture: UIRotationGestureRecognizer) {
+//        guard let modelEntity = modelEntity else { return }
+//        
+//        // Get the current rotation of the model
+//        let currentRotation = modelEntity.transform.rotation
+//        
+//        // Calculate the new rotation based on the rotation gesture
+//        let newRotation = simd_quatf(angle: Float(gesture.rotation), axis: [0, 1, 0]) // Rotate around the Y-axis
+//        
+//        // Apply the new rotation to the model
+//        modelEntity.transform.rotation = newRotation * currentRotation
+//        
+//        // Reset the gesture rotation to 0 to avoid exponential rotation
+//        gesture.rotation = 0
+//    }
+//    @objc func handleRotation(_ gesture: UIRotationGestureRecognizer) {
+//        guard let modelEntity = modelEntity else { return }
+//        
+//        switch gesture.state {
+//        case .began, .changed:
+//            // Get the current rotation
+//            let currentRotation = modelEntity.transform.rotation
+//            
+//            // Get rotation angles from the gesture
+//            let rotationX = Float(gesture.rotation) * 0.5  // Adjust factor for smoothness
+//            let rotationY = Float(gesture.velocity) * 0.01 // Y-axis based on velocity
+//            
+//            // Create rotation quaternions
+//            let newRotationX = simd_quatf(angle: rotationX, axis: [1, 0, 0]) // X-axis rotation
+//            let newRotationY = simd_quatf(angle: rotationY, axis: [0, 1, 0]) // Y-axis rotation
+//            
+//            // Combine rotations
+//            modelEntity.transform.rotation = newRotationX * newRotationY * currentRotation
+//            
+//            // Reset gesture rotation to avoid exponential rotations
+//            gesture.rotation = 0
+//
+//        default:
+//            break
+//        }
+//    }
 
     
-    func addLightToModel() {
-                // Create a point light
-                let light = PointLight()
-        
-                // Set light properties
-                light.light.intensity = 1000 // Brightness of the light
-                light.light.color = .white // Light color
-        
-                // Position the light (e.g., 1 meter above the model)
-                light.position = [0, 1, 0] // Adjust as needed
-        
-                // Add the light to the model's parent entity (or anchor entity)
-                if let modelEntity = modelEntity {
-                    modelEntity.addChild(light)
-                }
-        let spotLight = CustomSpotLight()
-        let lightAnchor = AnchorEntity(world: [1,1,1])
-        lightAnchor.addChild(spotLight)
-        arView.scene.anchors.append(lightAnchor)
-         Create an anchor to hold the light
-        let lightAnchor = AnchorEntity(world: SIMD3<Float>(0, 2, 0)) // Position above scene
-
-        // Create a directional light
-        let directionalLight = Entity()
-        let lightComponent = DirectionalLightComponent(
-            color: .white,
-            intensity: 10000,  // Adjust brightness
-            isRealWorldProxy: false
-        )
-
-         Set the direction (e.g., from top-left to bottom-right)
-        directionalLight.look(at: SIMD3<Float>(0, -1, -1), from: SIMD3<Float>(0, 1, 1), relativeTo: nil)
-
-        // Assign the component
-        directionalLight.components[DirectionalLightComponent.self] = lightComponent
-
-        // Add light to anchor and scene
-        lightAnchor.addChild(directionalLight)
-        arView.scene.addAnchor(lightAnchor)
-    }
+//    func addLightToModel() {
+//        //        // Create a point light
+//        //        let light = PointLight()
+//        //
+//        //        // Set light properties
+//        //        light.light.intensity = 1000 // Brightness of the light
+//        //        light.light.color = .white // Light color
+//        //
+//        //        // Position the light (e.g., 1 meter above the model)
+//        //        light.position = [0, 1, 0] // Adjust as needed
+//        //
+//        //        // Add the light to the model's parent entity (or anchor entity)
+//        //        if let modelEntity = modelEntity {
+//        //            modelEntity.addChild(light)
+//        //        }
+////        let spotLight = CustomSpotLight()
+////        let lightAnchor = AnchorEntity(world: [1,1,1])
+////        lightAnchor.addChild(spotLight)
+////        arView.scene.anchors.append(lightAnchor)
+//        // Create an anchor to hold the light
+//        let lightAnchor = AnchorEntity(world: SIMD3<Float>(0, 2, 0)) // Position above scene
+//
+//        // Create a directional light
+//        let directionalLight = Entity()
+//        let lightComponent = DirectionalLightComponent(
+//            color: .white,
+//            intensity: 10000,  // Adjust brightness
+//            isRealWorldProxy: false
+//        )
+//
+//        // Set the direction (e.g., from top-left to bottom-right)
+//        directionalLight.look(at: SIMD3<Float>(0, -1, -1), from: SIMD3<Float>(0, 1, 1), relativeTo: nil)
+//
+//        // Assign the component
+//        directionalLight.components[DirectionalLightComponent.self] = lightComponent
+//
+//        // Add light to anchor and scene
+//        lightAnchor.addChild(directionalLight)
+//        arView.scene.addAnchor(lightAnchor)
+//    }
     
-    func addDirectionalLight() {
-        // Create a directional light
-        let light = DirectionalLight()
-
-        // Set light properties
-        light.light.intensity = 10000 // Brightness of the light
-        light.light.color = .red // Light color
-
-        // Set the light's orientation (e.g., shining from the top-left)
-        light.orientation = simd_quatf(angle: .pi / 4, axis: [1, -1, 0])
-
-        // Add the light to the scene
-        let anchorEntity = AnchorEntity(world: [0, 0, 0])
-        anchorEntity.addChild(light)
-        arView.scene.addAnchor(anchorEntity)
-    }
+//    func addDirectionalLight() {
+//        // Create a directional light
+//        let light = DirectionalLight()
+//        
+//        // Set light properties
+//        light.light.intensity = 10000 // Brightness of the light
+//        light.light.color = .red // Light color
+//        
+//        // Set the light's orientation (e.g., shining from the top-left)
+//        light.orientation = simd_quatf(angle: .pi / 4, axis: [1, -1, 0])
+//        
+//        // Add the light to the scene
+//        let anchorEntity = AnchorEntity(world: [0, 0, 0])
+//        anchorEntity.addChild(light)
+//        arView.scene.addAnchor(anchorEntity)
+//    }
     
-    func addSpotLight() {
-        // Create a spot light
-        let light = SpotLight()
-
-        // Set light properties
-        light.light.intensity = 1000 // Brightness of the light
-        light.light.color = .white // Light color
-        light.light.innerAngleInDegrees = .pi / 6 // Inner cone angle
-        light.light.outerAngleInDegrees = .pi / 4 // Outer cone angle
-
-        // Position the light (e.g., 1 meter above and in front of the model)
-        light.position = [0, 1, -1] // Adjust as needed
-
-        // Orient the light to point at the model
-        light.look(at: [0, 0, 0], from: light.position, relativeTo: nil)
-
-        // Add the light to the scene
-        let anchorEntity = AnchorEntity(world: [0, 0, 0])
-        anchorEntity.addChild(light)
-        arView.scene.addAnchor(anchorEntity)
-    }
+//    func addSpotLight() {
+//        // Create a spot light
+//        let light = SpotLight()
+//        
+//        // Set light properties
+//        light.light.intensity = 1000 // Brightness of the light
+//        light.light.color = .white // Light color
+//        light.light.innerAngleInDegrees = .pi / 6 // Inner cone angle
+//        light.light.outerAngleInDegrees = .pi / 4 // Outer cone angle
+//        
+//        // Position the light (e.g., 1 meter above and in front of the model)
+//        light.position = [0, 1, -1] // Adjust as needed
+//        
+//        // Orient the light to point at the model
+//        light.look(at: [0, 0, 0], from: light.position, relativeTo: nil)
+//        
+//        // Add the light to the scene
+//        let anchorEntity = AnchorEntity(world: [0, 0, 0])
+//        anchorEntity.addChild(light)
+//        arView.scene.addAnchor(anchorEntity)
+//    }
 }
 
-class CustomSpotLight: Entity, HasSpotLight {
-    required init() {
-        super.init()
-        self.light = SpotLightComponent(color: .white,
-                                    intensity: 2500000,
-                          innerAngleInDegrees: 70,
-                          outerAngleInDegrees: 120,
-                            attenuationRadius: 9.0)
-        self.shadow = SpotLightComponent.Shadow()
-        self.position.y = 5.0
-        self.orientation = simd_quatf(angle: -.pi/1.5,
-                                       axis: [1,0,0])
-    }
-}
+//class CustomSpotLight: Entity, HasSpotLight {
+//    required init() {
+//        super.init()
+//        self.light = SpotLightComponent(color: .white,
+//                                    intensity: 2500000,
+//                          innerAngleInDegrees: 70,
+//                          outerAngleInDegrees: 120,
+//                            attenuationRadius: 9.0)
+//        self.shadow = SpotLightComponent.Shadow()
+//        self.position.y = 5.0
+//        self.orientation = simd_quatf(angle: -.pi/1.5,
+//                                       axis: [1,0,0])
+//    }
+//}
 
 extension simd_float4x4 {
     var position: SIMD3<Float> {
@@ -526,10 +588,10 @@ extension ARViewController {
     }
     
     @IBAction func onPlaceWindowBtnTap(_ sender: UIButton) {
-        placeImageInAR(imageName: "awning oper left", sceneView: sceneView)
-        placeImageInCenter(imageName: "awning oper left", sceneView: sceneView)
-        self.placeWindow()
-        self.loadModel()
+//        placeImageInAR(imageName: "awning oper left", sceneView: sceneView)
+//        placeImageInCenter(imageName: "awning oper left", sceneView: sceneView)
+//        self.placeWindow()
+//        self.loadModel()
         if depthLabel.isHidden {
             
             if isWindowAdded {
@@ -552,7 +614,7 @@ extension ARViewController {
     }
     
     @IBAction func onSaveShareBtnTap(_ sender: UIButton) {
-        captureAndShareScreenshot(from: sceneView, in: self)
+//        captureAndShareScreenshot(from: sceneView, in: self)
         captureAndShareScreenshot(from: arView, in: self)
     }
 }
@@ -562,300 +624,300 @@ extension ARViewController {
 //MARK: Arkit Delegate Method...
 extension ARViewController: ARSCNViewDelegate {
     
-    func placeWindow(){
-        if isWindowAdded {
-            print("Window already added. Ignoring touch.")
-            return // Exit if a window is already added
-        }
-        guard let query = sceneView.raycastQuery(from: sceneView.center, allowing: .existingPlaneGeometry, alignment: .vertical) else { return }
-            let results = sceneView.session.raycast(query)
-
-        if let hitResults = results.first {
-            updateWallDetectionUI(detected: true) // Show UI message
-            showPlaneIndicator(at: hitResults)
-            let windowScene = SCNScene(named: "art.scnassets/Window_1_Green.scn")!
-            print("hitResults : \(hitResults)")
-
-             Create a parent node to hold both "Glass" and "Window"
-            let parentNode = SCNNode()
-            parentNode.position = SCNVector3(
-                x: hitResults.worldTransform.columns.3.x,
-                y: -0.4, //hitResults.worldTransform.columns.3.y,
-                z: hitResults.worldTransform.columns.3.z
-            )
-
-            // Extract the normal of the wall
-            let normal = SCNVector3(
-                x: hitResults.worldTransform.columns.2.x,
-                y: hitResults.worldTransform.columns.2.y,
-                z: hitResults.worldTransform.columns.2.z
-            )
-
-            // Define a small depth offset
-            let depthOffset: Float = -0.1
-
-            // Adjust position
-            parentNode.position = SCNVector3(
-                x: hitResults.worldTransform.columns.3.x + normal.x * depthOffset,
-                y: -0.03, //hitResults.worldTransform.columns.3.y + normal.y * depthOffset,
-                z: hitResults.worldTransform.columns.3.z + normal.z * depthOffset
-            )
-
-             Align the window rotation with the wall
-//            parentNode.simdOrientation = simd_quatf(hitResults.worldTransform)
-
-             Load the "Window" node
-            if let windowNode = windowScene.rootNode.childNode(withName: "Window", recursively: true) {
-                parentNode.addChildNode(windowNode)
-                if let glassNode = windowScene.rootNode.childNode(withName: "window_1_green", recursively: true) {
-                    parentNode.addChildNode(glassNode)
-                    sceneView.scene.rootNode.addChildNode(parentNode)
-//                    imageNode = parentNode
-                    isWindowAdded = true // Set flag to true after adding the window
-                    print("Window with glass added successfully.")
-                } else {
-                    print("Glass node not found")
-                }
-
-            } else {
-                print("Window node not found")
-            }
-
-                // Load the "Glass" node
-                if let glassNode = windowScene.rootNode.childNode(withName: "Glass", recursively: true) {
-                    parentNode.addChildNode(glassNode)
-                } else {
-                    print("Glass node not found")
-                }
-
-             Rotate to face the camera properly
-                parentNode.eulerAngles.z = .pi / 2
-
-             Add parentNode to the scene
-
-        } else {
-            updateWallDetectionUI(detected: false) // Hide UI message
-        }
-
-            if let hitResults = results.first {
-
-            } else {
-                print("Not able to add glass.")
-            }
-        }
-    }
-    
-    func loadUSDZModel() {
-
-        if let path = Bundle.main.path(forResource: "sneaker_airforce", ofType: "usdz") {
-            print("✅ Model found at: \(path)")
-
-            guard let scene = SCNScene(named: "sneaker_airforce.usdz") else {
-                print("Failed to load model: sneaker_airforce.usdz")
-                return
-            }
-
-//            // Clone the root node of the scene to manipulate it
-            let modelNode = scene.rootNode.clone()
-
-            // Position the model in front of the camera
-            modelNode.position = SCNVector3(0, -0.5, -2) // Adjust these values as needed
-
-            // Scale down the model (optional)
-            modelNode.scale = SCNVector3(0.5, 0.5, 0.5) // Adjust scaling as needed
-
-            // Add the model node to the scene
-            scene.rootNode.addChildNode(modelNode)
-
-            // Configure the scene view
-//            sceneView.allowsCameraControl = true
-            sceneView.automaticallyUpdatesLighting = true
-
-            // Set the scene to the scene view
-            sceneView.scene = scene
-
-        } else {
-            print("❌ Model not found!")
-        }
-
-    }
-    
-    func showPlaneIndicator(at hitResults: ARRaycastResult) {
-        // Remove old indicators
-        sceneView.scene.rootNode.childNode(withName: "planeIndicator", recursively: true)?.removeFromParentNode()
-
-        // Create a visual indicator (semi-transparent green box)
-        let indicator = SCNBox(width: 0.2, height: 0.2, length: 0.01, chamferRadius: 0)
-        let material = SCNMaterial()
-        material.diffuse.contents = UIColor.green.withAlphaComponent(0.5) // Semi-transparent
-        indicator.materials = [material]
-
-        let indicatorNode = SCNNode(geometry: indicator)
-        indicatorNode.name = "planeIndicator"
-        indicatorNode.position = SCNVector3(
-            x: hitResults.worldTransform.columns.3.x,
-            y: hitResults.worldTransform.columns.3.y,
-            z: hitResults.worldTransform.columns.3.z
-        )
-
-        sceneView.scene.rootNode.addChildNode(indicatorNode)
-    }
+//    func placeWindow(){
+//        if isWindowAdded {
+//            print("Window already added. Ignoring touch.")
+//            return // Exit if a window is already added
+//        }
+//        guard let query = sceneView.raycastQuery(from: sceneView.center, allowing: .existingPlaneGeometry, alignment: .vertical) else { return }
+//            let results = sceneView.session.raycast(query)
+//            
+//        if let hitResults = results.first {
+////            updateWallDetectionUI(detected: true) // Show UI message
+////            showPlaneIndicator(at: hitResults)
+//            let windowScene = SCNScene(named: "art.scnassets/Window_1_Green.scn")!
+//            print("hitResults : \(hitResults)")
 //
-    func updateWallDetectionUI(detected: Bool) {
-        DispatchQueue.main.async {
-            self.detectionLabel.isHidden = !detected
-        }
-    }
+//            // Create a parent node to hold both "Glass" and "Window"
+//            let parentNode = SCNNode()
+////            parentNode.position = SCNVector3(
+////                x: hitResults.worldTransform.columns.3.x,
+////                y: -0.4, //hitResults.worldTransform.columns.3.y,
+////                z: hitResults.worldTransform.columns.3.z
+////            )
+//            
+//            // Extract the normal of the wall
+//            let normal = SCNVector3(
+//                x: hitResults.worldTransform.columns.2.x,
+//                y: hitResults.worldTransform.columns.2.y,
+//                z: hitResults.worldTransform.columns.2.z
+//            )
+//
+//            // Define a small depth offset
+//            let depthOffset: Float = -0.1
+//
+//            // Adjust position
+//            parentNode.position = SCNVector3(
+//                x: hitResults.worldTransform.columns.3.x + normal.x * depthOffset,
+//                y: -0.03, //hitResults.worldTransform.columns.3.y + normal.y * depthOffset,
+//                z: hitResults.worldTransform.columns.3.z + normal.z * depthOffset
+//            )
+//
+//            // Align the window rotation with the wall
+////            parentNode.simdOrientation = simd_quatf(hitResults.worldTransform)
+//
+//            // Load the "Window" node
+////            if let windowNode = windowScene.rootNode.childNode(withName: "Window", recursively: true) {
+////                parentNode.addChildNode(windowNode)
+//                if let glassNode = windowScene.rootNode.childNode(withName: "window_1_green", recursively: true) {
+//                    parentNode.addChildNode(glassNode)
+//                    sceneView.scene.rootNode.addChildNode(parentNode)
+////                    imageNode = parentNode
+//                    isWindowAdded = true // Set flag to true after adding the window
+//                    print("Window with glass added successfully.")
+//                } else {
+//                    print("Glass node not found")
+//                }
+//                
+////            } else {
+////                print("Window node not found")
+////            }
+//
+////                // Load the "Glass" node
+////                if let glassNode = windowScene.rootNode.childNode(withName: "Glass", recursively: true) {
+////                    parentNode.addChildNode(glassNode)
+////                } else {
+////                    print("Glass node not found")
+////                }
+//            
+//            // Rotate to face the camera properly
+////                parentNode.eulerAngles.z = .pi / 2
+//
+//            // Add parentNode to the scene
+//            
+//        } else {
+////            updateWallDetectionUI(detected: false) // Hide UI message
+//        }
+//        
+////            if let hitResults = results.first {
+////                
+////            } else {
+////                print("Not able to add glass.")
+////            }
+////        }
+//    }
+    
+//    func loadUSDZModel() {
+//        
+//        if let path = Bundle.main.path(forResource: "sneaker_airforce", ofType: "usdz") {
+//            print("✅ Model found at: \(path)")
+//            
+//            guard let scene = SCNScene(named: "sneaker_airforce.usdz") else {
+//                print("Failed to load model: sneaker_airforce.usdz")
+//                return
+//            }
+//            
+////            // Clone the root node of the scene to manipulate it
+//            let modelNode = scene.rootNode.clone()
+//
+//            // Position the model in front of the camera
+//            modelNode.position = SCNVector3(0, -0.5, -2) // Adjust these values as needed
+//
+//            // Scale down the model (optional)
+//            modelNode.scale = SCNVector3(0.5, 0.5, 0.5) // Adjust scaling as needed
+//
+//            // Add the model node to the scene
+//            scene.rootNode.addChildNode(modelNode)
+//
+//            // Configure the scene view
+////            sceneView.allowsCameraControl = true
+//            sceneView.automaticallyUpdatesLighting = true
+//
+//            // Set the scene to the scene view
+//            sceneView.scene = scene
+//            
+//        } else {
+//            print("❌ Model not found!")
+//        }
+//
+//    }
+    
+//    func showPlaneIndicator(at hitResults: ARRaycastResult) {
+//        // Remove old indicators
+//        sceneView.scene.rootNode.childNode(withName: "planeIndicator", recursively: true)?.removeFromParentNode()
+//        
+//        // Create a visual indicator (semi-transparent green box)
+//        let indicator = SCNBox(width: 0.2, height: 0.2, length: 0.01, chamferRadius: 0)
+//        let material = SCNMaterial()
+//        material.diffuse.contents = UIColor.green.withAlphaComponent(0.5) // Semi-transparent
+//        indicator.materials = [material]
+//
+//        let indicatorNode = SCNNode(geometry: indicator)
+//        indicatorNode.name = "planeIndicator"
+//        indicatorNode.position = SCNVector3(
+//            x: hitResults.worldTransform.columns.3.x,
+//            y: hitResults.worldTransform.columns.3.y,
+//            z: hitResults.worldTransform.columns.3.z
+//        )
+//        
+//        sceneView.scene.rootNode.addChildNode(indicatorNode)
+//    }
+//    
+//    func updateWallDetectionUI(detected: Bool) {
+//        DispatchQueue.main.async {
+//            self.detectionLabel.isHidden = !detected
+//        }
+//    }
     
     
     // Add window in the center of the scene
-        private func addWindowInCenter() {
-            guard let windowScene = SCNScene(named: "art.scnassets/window_1Org.scn") else {
-                print("❌ Failed to load window scene")
-                return
-            }
-
-            // Create parent node to hold both window and glass
-            let parentNode = SCNNode()
-
-            // Position it slightly in front of the camera
-            parentNode.position = SCNVector3(0, -1.0, -3.0) // 1 meter in front
-
-            // Add the "Window" node
-            if let windowNode = windowScene.rootNode.childNode(withName: "Window", recursively: true) {
-                parentNode.addChildNode(windowNode)
-            } else {
-                print("❌ Window node not found")
-            }
-
-            // Add the "Glass" node
-            if let glassNode = windowScene.rootNode.childNode(withName: "Glass", recursively: true) {
-                parentNode.addChildNode(glassNode)
-            } else {
-                print("❌ Glass node not found")
-            }
-
-            // Add the window to the scene
-            sceneView.scene.rootNode.addChildNode(parentNode)
-            isWindowAdded = true
-            print("✅ Window with glass added in front of the camera.")
-        }
+//        private func addWindowInCenter() {
+//            guard let windowScene = SCNScene(named: "art.scnassets/window_1Org.scn") else {
+//                print("❌ Failed to load window scene")
+//                return
+//            }
+//
+//            // Create parent node to hold both window and glass
+//            let parentNode = SCNNode()
+//
+//            // Position it slightly in front of the camera
+//            parentNode.position = SCNVector3(0, -1.0, -3.0) // 1 meter in front
+//
+//            // Add the "Window" node
+//            if let windowNode = windowScene.rootNode.childNode(withName: "Window", recursively: true) {
+//                parentNode.addChildNode(windowNode)
+//            } else {
+//                print("❌ Window node not found")
+//            }
+//
+//            // Add the "Glass" node
+//            if let glassNode = windowScene.rootNode.childNode(withName: "Glass", recursively: true) {
+//                parentNode.addChildNode(glassNode)
+//            } else {
+//                print("❌ Glass node not found")
+//            }
+//
+//            // Add the window to the scene
+//            sceneView.scene.rootNode.addChildNode(parentNode)
+//            isWindowAdded = true
+//            print("✅ Window with glass added in front of the camera.")
+//        }
 
     // For a model with one or similar bounding box, Euler and position value
-    @objc func handlePinch(_ sender: UIPinchGestureRecognizer) {
-        let touchLocation = sender.location(in: sceneView)
-        let hitTestResults = sceneView.hitTest(touchLocation, options: nil)
-
-        // Check if the pinch gesture hit any node
-        if let hitResult = hitTestResults.first {
-            let node = hitResult.node
-            let minScale: Float = 0.2
-            let maxScale: Float = 3.0
-
-
-            // Apply scaling based on the pinch scale
-            let scale = Float(sender.scale)
-//            node.scale = SCNVector3(scale, scale, scale)
-
-            node.scale = SCNVector3(
-                max(minScale, min(maxScale, node.scale.x * scale)),
-                max(minScale, min(maxScale, node.scale.y * scale)),
-                max(minScale, min(maxScale, node.scale.z * scale))
-            )
-
-             Reset the gesture's scale to avoid exponential scaling
-//            sender.scale = 1.0
-        }
-    }
+//    @objc func handlePinch(_ sender: UIPinchGestureRecognizer) {
+//        let touchLocation = sender.location(in: sceneView)
+//        let hitTestResults = sceneView.hitTest(touchLocation, options: nil)
+//
+//        // Check if the pinch gesture hit any node
+//        if let hitResult = hitTestResults.first {
+//            let node = hitResult.node
+//            let minScale: Float = 0.2
+//            let maxScale: Float = 3.0
+//
+//
+//            // Apply scaling based on the pinch scale
+//            let scale = Float(sender.scale)
+////            node.scale = SCNVector3(scale, scale, scale)
+//
+//            node.scale = SCNVector3(
+//                max(minScale, min(maxScale, node.scale.x * scale)),
+//                max(minScale, min(maxScale, node.scale.y * scale)),
+//                max(minScale, min(maxScale, node.scale.z * scale))
+//            )
+//
+//            // Reset the gesture's scale to avoid exponential scaling
+////            sender.scale = 1.0
+//        }
+//    }
     
-    @objc func handlePinch(_ sender: UIPinchGestureRecognizer) {
-        let touchLocation = sender.location(in: sceneView)
-        let hitTestResults = sceneView.hitTest(touchLocation, options: nil)
-
-        if let hitResult = hitTestResults.first {
-            let node = hitResult.node
-
-            // Find the parent node that contains both Glass and Window
-            guard let parentNode = node.parent else { return }
-
-            let minScale: Float = 0.2
-            let maxScale: Float = 3.0
-
-            let scale = Float(sender.scale)
-
-            // Apply scaling to the parent node
-            parentNode.scale = SCNVector3(
-                max(minScale, min(maxScale, parentNode.scale.x * scale)),
-                max(minScale, min(maxScale, parentNode.scale.y * scale)),
-                max(minScale, min(maxScale, parentNode.scale.z * scale))
-            )
-
-            sender.scale = 1.0 // Reset scale to prevent exponential growth
-        }
-    }
-    @objc func handlePinch(_ gesture: UIPinchGestureRecognizer) {
+//    @objc func handlePinch(_ sender: UIPinchGestureRecognizer) {
+//        let touchLocation = sender.location(in: sceneView)
+//        let hitTestResults = sceneView.hitTest(touchLocation, options: nil)
+//
+//        if let hitResult = hitTestResults.first {
+//            let node = hitResult.node
+//
+//            // Find the parent node that contains both Glass and Window
+//            guard let parentNode = node.parent else { return }
+//
+//            let minScale: Float = 0.2
+//            let maxScale: Float = 3.0
+//
+//            let scale = Float(sender.scale)
+//
+//            // Apply scaling to the parent node
+//            parentNode.scale = SCNVector3(
+//                max(minScale, min(maxScale, parentNode.scale.x * scale)),
+//                max(minScale, min(maxScale, parentNode.scale.y * scale)),
+//                max(minScale, min(maxScale, parentNode.scale.z * scale))
+//            )
+//
+//            sender.scale = 1.0 // Reset scale to prevent exponential growth
+//        }
+//    }
+//    @objc func handlePinch(_ gesture: UIPinchGestureRecognizer) {
+////        guard let node = imageNode else { return }
+//
+//        // Scale the node based on pinch
+//        let scale = Float(gesture.scale)
+//        
+//        // Set minimum and maximum zoom limits
+//        let minScale: Float = 0.5   // 50% of original size
+//        let maxScale: Float = 3.0   // 300% of original size
+//        
+////        let newScale = SCNVector3(
+////            max(min(node.scale.x * scale, maxScale), minScale),
+////            max(min(node.scale.y * scale, maxScale), minScale),
+////            max(min(node.scale.z * scale, maxScale), minScale)
+////        )
+////        
+////        node.scale = newScale
+////        
+//        // Reset gesture scale to avoid exponential growth
+//        gesture.scale = 1.0
+//    }
+    
+//    @objc func handlePan(_ gesture: UIPanGestureRecognizer) {
+//        guard let sceneView = self.sceneView else { return }
 //        guard let node = imageNode else { return }
-
-        // Scale the node based on pinch
-        let scale = Float(gesture.scale)
-
-        // Set minimum and maximum zoom limits
-        let minScale: Float = 0.5   // 50% of original size
-        let maxScale: Float = 3.0   // 300% of original size
-
-        let newScale = SCNVector3(
-            max(min(node.scale.x * scale, maxScale), minScale),
-            max(min(node.scale.y * scale, maxScale), minScale),
-            max(min(node.scale.z * scale, maxScale), minScale)
-        )
-
-        node.scale = newScale
-
-         Reset gesture scale to avoid exponential growth
-        gesture.scale = 1.0
-    }
-    
-    @objc func handlePan(_ gesture: UIPanGestureRecognizer) {
-        guard let sceneView = self.sceneView else { return }
-        guard let node = imageNode else { return }
-
-        // Get the touch location on the screen
-        let touchLocation = gesture.location(in: sceneView)
-
-        // Convert touch location to a 3D position in AR space
-        let hitTestResults = sceneView.hitTest(touchLocation, types: .existingPlaneUsingExtent)
-
-        if let result = hitTestResults.first {
-            let newPosition = SCNVector3(
-                result.worldTransform.columns.3.x,
-                node.position.y, // Keep the y-position the same
-                result.worldTransform.columns.3.z
-            )
-            node.position = newPosition // Move image node to the new position
-        }
-    }
-    @objc func handlePan(_ gesture: UIPanGestureRecognizer) {
-        guard let sceneView = gesture.view as? ARSCNView else { return }
-        guard let node = imageNode else { return }
-
-        // Get the touch location in 2D screen space
-        let touchLocation = gesture.location(in: sceneView)
-
-        // Convert the touch location to a 3D world position
-        let hitTestResults = sceneView.hitTest(touchLocation, types: .featurePoint)
-
-        if let result = hitTestResults.first {
-            let newPosition = SCNVector3(
-                result.worldTransform.columns.3.x,
-                result.worldTransform.columns.3.y,
-                result.worldTransform.columns.3.z
-            )
-
-            // Smooth movement using SCNAction
-            let moveAction = SCNAction.move(to: newPosition, duration: 0.1)
-            node.runAction(moveAction)
-        }
-    }
+//
+//        // Get the touch location on the screen
+//        let touchLocation = gesture.location(in: sceneView)
+//
+//        // Convert touch location to a 3D position in AR space
+//        let hitTestResults = sceneView.hitTest(touchLocation, types: .existingPlaneUsingExtent)
+//
+//        if let result = hitTestResults.first {
+//            let newPosition = SCNVector3(
+//                result.worldTransform.columns.3.x,
+//                node.position.y, // Keep the y-position the same
+//                result.worldTransform.columns.3.z
+//            )
+//            node.position = newPosition // Move image node to the new position
+//        }
+//    }
+//    @objc func handlePan(_ gesture: UIPanGestureRecognizer) {
+//        guard let sceneView = gesture.view as? ARSCNView else { return }
+//        guard let node = imageNode else { return }
+//
+//        // Get the touch location in 2D screen space
+//        let touchLocation = gesture.location(in: sceneView)
+//
+//        // Convert the touch location to a 3D world position
+//        let hitTestResults = sceneView.hitTest(touchLocation, types: .featurePoint)
+//        
+//        if let result = hitTestResults.first {
+//            let newPosition = SCNVector3(
+//                result.worldTransform.columns.3.x,
+//                result.worldTransform.columns.3.y,
+//                result.worldTransform.columns.3.z
+//            )
+//            
+//            // Smooth movement using SCNAction
+//            let moveAction = SCNAction.move(to: newPosition, duration: 0.1)
+//            node.runAction(moveAction)
+//        }
+//    }
     @objc func handlePanGesture(_ gesture: UIPanGestureRecognizer) {
         guard let modelEntity = modelEntity else { return }
                 
@@ -876,21 +938,21 @@ extension ARViewController: ARSCNViewDelegate {
 //        guard let modelEntity = modelEntity else { return }
 //
 //            // Get the translation of the pan gesture
-            let translation = gesture.translation(in: arView)
-
-            // Adjust rotation sensitivity
-            let rotationY = Float(translation.x) * 0.01  // Horizontal pan → Y-axis rotation
-            let rotationX = Float(translation.y) * 0.01  // Vertical pan → X-axis rotation
-
-            // Create rotation quaternions
-            let rotationQuatX = simd_quatf(angle: rotationX, axis: [1, 0, 0])  // X-axis (up/down)
-            let rotationQuatY = simd_quatf(angle: rotationY, axis: [0, 1, 0])  // Y-axis (left/right)
-
-            // Combine rotations and apply to model
-            modelEntity.transform.rotation = rotationQuatX * rotationQuatY * modelEntity.transform.rotation
-
-            // Reset translation to prevent excessive rotation
-            gesture.setTranslation(.zero, in: arView)
+//            let translation = gesture.translation(in: arView)
+//            
+//            // Adjust rotation sensitivity
+//            let rotationY = Float(translation.x) * 0.01  // Horizontal pan → Y-axis rotation
+//            let rotationX = Float(translation.y) * 0.01  // Vertical pan → X-axis rotation
+//
+//            // Create rotation quaternions
+//            let rotationQuatX = simd_quatf(angle: rotationX, axis: [1, 0, 0])  // X-axis (up/down)
+//            let rotationQuatY = simd_quatf(angle: rotationY, axis: [0, 1, 0])  // Y-axis (left/right)
+//
+//            // Combine rotations and apply to model
+//            modelEntity.transform.rotation = rotationQuatX * rotationQuatY * modelEntity.transform.rotation
+//
+//            // Reset translation to prevent excessive rotation
+//            gesture.setTranslation(.zero, in: arView)
 
     }
     
@@ -914,43 +976,43 @@ extension ARViewController: ARSCNViewDelegate {
         modelEntity.position = newPosition
     }
     
-    @objc func handleStretchGesture(_ gesture: UIPanGestureRecognizer) {
-        guard let modelEntity = modelEntity else { return }
-
-        // Translation in 2D screen space
-        let translation = gesture.translation(in: arView)
-        gesture.setTranslation(.zero, in: arView)
-
-        // Determine dominant direction
-        let absX = abs(translation.x)
-        let absY = abs(translation.y)
-
-        // Stretch factor (tweak for sensitivity)
-        let stretchFactor: Float = 0.003
-
-        var newScale = modelEntity.scale
-
-        if absX > absY {
-            // Horizontal drag → stretch in X-axis
-            newScale.x += Float(translation.x) * stretchFactor
-        } else {
-            // Vertical drag → stretch in Y-axis
-            newScale.y -= Float(translation.y) * stretchFactor // subtract Y to align drag up = stretch up
-        }
-
-        // Clamp to avoid flipping or invalid values
-        newScale.x = max(0.1, newScale.x)
-        newScale.y = max(0.1, newScale.y)
-
-        modelEntity.scale = newScale
-    }
+//    @objc func handleStretchGesture(_ gesture: UIPanGestureRecognizer) {
+//        guard let modelEntity = modelEntity else { return }
+//
+//        // Translation in 2D screen space
+//        let translation = gesture.translation(in: arView)
+//        gesture.setTranslation(.zero, in: arView)
+//
+//        // Determine dominant direction
+//        let absX = abs(translation.x)
+//        let absY = abs(translation.y)
+//
+//        // Stretch factor (tweak for sensitivity)
+//        let stretchFactor: Float = 0.003
+//
+//        var newScale = modelEntity.scale
+//
+//        if absX > absY {
+//            // Horizontal drag → stretch in X-axis
+//            newScale.x += Float(translation.x) * stretchFactor
+//        } else {
+//            // Vertical drag → stretch in Y-axis
+//            newScale.y -= Float(translation.y) * stretchFactor // subtract Y to align drag up = stretch up
+//        }
+//
+//        // Clamp to avoid flipping or invalid values
+//        newScale.x = max(0.1, newScale.x)
+//        newScale.y = max(0.1, newScale.y)
+//
+//        modelEntity.scale = newScale
+//    }
     @objc func handleStretchGesture(_ gesture: UIPanGestureRecognizer) {
         guard let modelEntity = modelEntity else { return }
 
         let translation = gesture.translation(in: arView)
         let location = gesture.location(in: arView)
 
-        let stretchFactor: Float = 0.03
+        let stretchFactor: Float = 0.003
 
         var newScale = modelEntity.scale
         var newPosition = modelEntity.position
@@ -975,7 +1037,7 @@ extension ARViewController: ARSCNViewDelegate {
                 let newScaleX = max(0.1, newScale.x - delta)
                 let scaleChange = newScale.x - newScaleX
                 newScale.x = newScaleX
-                newPosition.x += scaleChange / 3  // move right to squeeze left
+                newPosition.x += scaleChange / 2  // move right to squeeze left
             } else if side == "right" {
                 // Stretch/squeeze only the right side
                 let newScaleX = max(0.1, newScale.x + delta)
@@ -1005,7 +1067,7 @@ extension ARViewController: ARSCNViewDelegate {
         print("✅ AR session paused. Cleaning up objects...")
 
         // Step 2: Delay node removal to avoid conflict with rendering
-        DispatchQueue.main.asyncAfter(deadline: .now()) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
 //            self.arView.scene.rootNode.enumerateChildNodes { (node, _) in
             self.arView.session.pause()  // Stop AR session
             self.arView.scene.anchors.removeAll()
@@ -1022,23 +1084,23 @@ extension ARViewController: ARSCNViewDelegate {
         self.setupArkit()
     }
     
-    func captureAndShareScreenshot(from arView: ARSCNView, in viewController: UIViewController) {
-        let image = arView.snapshot()
-
-        let activityVC = UIActivityViewController(activityItems: [image], applicationActivities: nil)
-
-        // iPad support
-        if let popoverController = activityVC.popoverPresentationController {
-            popoverController.sourceView = viewController.view
-            popoverController.sourceRect = CGRect(x: viewController.view.bounds.midX,
-                                                  y: viewController.view.bounds.midY,
-                                                  width: 1,
-                                                  height: 0)
-            popoverController.permittedArrowDirections = []
-        }
-
-        viewController.present(activityVC, animated: true, completion: nil)
-    }
+//    func captureAndShareScreenshot(from arView: ARSCNView, in viewController: UIViewController) {
+//        let image = arView.snapshot()
+//        
+//        let activityVC = UIActivityViewController(activityItems: [image], applicationActivities: nil)
+//        
+//        // iPad support
+//        if let popoverController = activityVC.popoverPresentationController {
+//            popoverController.sourceView = viewController.view
+//            popoverController.sourceRect = CGRect(x: viewController.view.bounds.midX,
+//                                                  y: viewController.view.bounds.midY,
+//                                                  width: 0,
+//                                                  height: 0)
+//            popoverController.permittedArrowDirections = []
+//        }
+//        
+//        viewController.present(activityVC, animated: true, completion: nil)
+//    }
     func captureAndShareScreenshot(from arView: ARView, in viewController: UIViewController) {
         // Capture a screenshot of the ARView
         arView.snapshot(saveToHDR: false) { image in
@@ -1058,7 +1120,7 @@ extension ARViewController: ARSCNViewDelegate {
                     popoverController.sourceView = viewController.view
                     popoverController.sourceRect = CGRect(x: viewController.view.bounds.midX,
                                                           y: viewController.view.bounds.midY,
-                                                          width: 1,
+                                                          width: 0,
                                                           height: 0)
                     popoverController.permittedArrowDirections = []
                 }
@@ -1088,7 +1150,7 @@ extension ARViewController: ARSCNViewDelegate {
                 plane.firstMaterial?.isDoubleSided = true // To make it visible from both sides
                 
                 let planeNode = SCNNode(geometry: plane)
-                planeNode.position = SCNVector3(1, 1, -0.5)
+                planeNode.position = SCNVector3(0, 0, -0.5)
 //                SCNVector3(
 //                    x: hitResults.worldTransform.columns.3.x,
 //                    y: hitResults.worldTransform.columns.3.y,
@@ -1097,9 +1159,9 @@ extension ARViewController: ARSCNViewDelegate {
                 planeNode.eulerAngles.x = -.pi / 2 // Rotate to lay flat
                 
                 // Rotate the plane to be vertical
-               planeNode.eulerAngles.x = 4  // Keep it upright
-               planeNode.eulerAngles.y = 3  // No rotation needed
-               planeNode.eulerAngles.z = 4  // No rotation needed
+               planeNode.eulerAngles.x = 0  // Keep it upright
+               planeNode.eulerAngles.y = 0  // No rotation needed
+               planeNode.eulerAngles.z = 0  // No rotation needed
                 
                 sceneView.scene.rootNode.addChildNode(planeNode)
                 isWindowAdded = true // Set flag to true after adding the window
@@ -1128,14 +1190,14 @@ extension ARViewController: ARSCNViewDelegate {
             planeNode.simdTransform = finalTransform
         }
         
-       planeNode.eulerAngles.x = -.pi / 4
+       planeNode.eulerAngles.x = -.pi / 2
         // Rotate the plane to be vertical
-       planeNode.eulerAngles.x = 3  // Keep it upright
-       planeNode.eulerAngles.y = 3  // No rotation needed
-       planeNode.eulerAngles.z = 3  // No rotation needed
+       planeNode.eulerAngles.x = 0  // Keep it upright
+       planeNode.eulerAngles.y = 0  // No rotation needed
+       planeNode.eulerAngles.z = 0  // No rotation needed
 
         sceneView.scene.rootNode.addChildNode(planeNode)
-        imageNode = planeNode // ✅ Store reference
+//        imageNode = planeNode // ✅ Store reference
     }
 
 }

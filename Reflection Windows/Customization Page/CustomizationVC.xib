@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="23504" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="23094" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_0" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23506"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23084"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -68,6 +68,7 @@
                 <outlet property="glassOptionInfoSubPopupVw" destination="IzC-QE-XcB" id="Tyc-p9-zXq"/>
                 <outlet property="glssInfoPopupTitleLbl" destination="AQ7-3F-Y7v" id="v7X-k0-rmh"/>
                 <outlet property="glssOptionInfoPopupTitleLbl" destination="fTH-eu-0k7" id="92R-ks-yuI"/>
+                <outlet property="goToArkitBtn" destination="GN1-5X-Di0" id="oOI-gR-vpB"/>
                 <outlet property="heightDimentionBaseVw" destination="Vph-LK-55X" id="Ca0-LE-SWo"/>
                 <outlet property="heightDimentionTxtField" destination="VGr-yX-2u5" id="kFt-0W-sgP"/>
                 <outlet property="heightRangeBaseVw" destination="Q0O-tG-cUg" id="zdo-QZ-Mtf"/>
@@ -226,10 +227,26 @@
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
-                        <constraint firstAttribute="bottom" secondItem="feY-H7-TcY" secondAttribute="bottom" id="t3U-8c-357"/>
+                        <constraint firstAttribute="height" constant="108" id="Ixq-ag-IAw"/>
                         <constraint firstItem="feY-H7-TcY" firstAttribute="leading" secondItem="iun-8q-zmr" secondAttribute="leading" id="w8y-LI-tom"/>
                     </constraints>
                 </view>
+                <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GN1-5X-Di0">
+                    <rect key="frame" x="184" y="199" width="120" height="35"/>
+                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.29999999999999999" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="120" id="SfN-iZ-Vmp"/>
+                        <constraint firstAttribute="height" constant="35" id="Xui-Eo-xby"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="Poppins-SemiBold" family="Poppins" pointSize="11"/>
+                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                    <state key="normal" title="View in your room">
+                        <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </state>
+                    <connections>
+                        <action selector="onArkitBtnTap:" destination="-1" eventType="touchUpInside" id="ynV-EE-pCO"/>
+                    </connections>
+                </button>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="466-Em-OkZ">
                     <rect key="frame" x="0.0" y="0.0" width="320" height="244"/>
                     <subviews>
@@ -2214,6 +2231,7 @@ consectetur nisi ab fuga eius</string>
                 <constraint firstItem="J8V-cB-hpX" firstAttribute="trailing" secondItem="cKZ-12-PPd" secondAttribute="trailing" id="Deh-X8-aPG"/>
                 <constraint firstItem="ILy-oh-lof" firstAttribute="top" secondItem="EYo-2K-9R3" secondAttribute="bottom" id="EMm-1T-IZs"/>
                 <constraint firstItem="HPe-sY-M9p" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="EfH-Qz-A0L"/>
+                <constraint firstItem="xhc-H5-hdN" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="8" id="FcZ-Xm-rXK"/>
                 <constraint firstAttribute="bottom" secondItem="HPe-sY-M9p" secondAttribute="bottom" id="I83-zj-h3o"/>
                 <constraint firstItem="1kg-QT-Rx4" firstAttribute="trailing" secondItem="EYo-2K-9R3" secondAttribute="trailing" id="KlS-jt-8RB"/>
                 <constraint firstItem="1kg-QT-Rx4" firstAttribute="bottom" secondItem="EYo-2K-9R3" secondAttribute="bottom" id="LKJ-jd-9q2"/>
@@ -2227,6 +2245,7 @@ consectetur nisi ab fuga eius</string>
                 <constraint firstItem="iun-8q-zmr" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="SbP-NL-nLv"/>
                 <constraint firstItem="iun-8q-zmr" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="ShF-EJ-8h1"/>
                 <constraint firstItem="cKZ-12-PPd" firstAttribute="leading" secondItem="EYo-2K-9R3" secondAttribute="leading" id="Tc0-X9-PIo"/>
+                <constraint firstItem="ILy-oh-lof" firstAttribute="top" secondItem="GN1-5X-Di0" secondAttribute="bottom" constant="10" id="V0M-h1-12D"/>
                 <constraint firstItem="sYu-p0-AgO" firstAttribute="trailing" secondItem="EYo-2K-9R3" secondAttribute="trailing" id="Vc9-yN-jem"/>
                 <constraint firstItem="1kg-QT-Rx4" firstAttribute="leading" secondItem="EYo-2K-9R3" secondAttribute="leading" id="XEM-C5-dr2"/>
                 <constraint firstItem="ILy-oh-lof" firstAttribute="top" secondItem="3pT-Hs-lWk" secondAttribute="bottom" id="XGm-OQ-vNI"/>
@@ -2243,6 +2262,7 @@ consectetur nisi ab fuga eius</string>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="ILy-oh-lof" secondAttribute="trailing" id="mKJ-QL-rbq"/>
                 <constraint firstItem="cKZ-12-PPd" firstAttribute="trailing" secondItem="EYo-2K-9R3" secondAttribute="trailing" id="mda-rL-1hu"/>
                 <constraint firstItem="ILy-oh-lof" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="pmG-t5-JNN"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="GN1-5X-Di0" secondAttribute="trailing" constant="16" id="qWJ-iK-4dK"/>
                 <constraint firstItem="3pT-Hs-lWk" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="r5c-hf-tbk"/>
                 <constraint firstAttribute="trailing" secondItem="HPe-sY-M9p" secondAttribute="trailing" id="rX5-Cy-FIb"/>
                 <constraint firstItem="466-Em-OkZ" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="sU0-tg-uBg"/>
@@ -2258,9 +2278,10 @@ consectetur nisi ab fuga eius</string>
             <variation key="default">
                 <mask key="subviews">
                     <exclude reference="466-Em-OkZ"/>
+                    <exclude reference="HPe-sY-M9p"/>
                 </mask>
             </variation>
-            <point key="canvasLocation" x="47.200000000000003" y="-34.729064039408868"/>
+            <point key="canvasLocation" x="46.875" y="-34.859154929577464"/>
         </view>
     </objects>
     <resources>
@@ -2282,13 +2303,13 @@ consectetur nisi ab fuga eius</string>
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemGray6Color">
-            <color red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemOrangeColor">
-            <color red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="1" green="0.58431372549019611" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemRedColor">
-            <color red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
