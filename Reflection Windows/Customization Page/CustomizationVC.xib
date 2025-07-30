@@ -227,7 +227,7 @@
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="108" id="Ixq-ag-IAw"/>
+                        <constraint firstAttribute="bottom" secondItem="feY-H7-TcY" secondAttribute="bottom" id="vbD-9f-Vua"/>
                         <constraint firstItem="feY-H7-TcY" firstAttribute="leading" secondItem="iun-8q-zmr" secondAttribute="leading" id="w8y-LI-tom"/>
                     </constraints>
                 </view>
@@ -2278,6 +2278,7 @@ consectetur nisi ab fuga eius</string>
             <variation key="default">
                 <mask key="subviews">
                     <exclude reference="466-Em-OkZ"/>
+                    <exclude reference="HPe-sY-M9p"/>
                 </mask>
             </variation>
             <point key="canvasLocation" x="46.875" y="-34.859154929577464"/>
